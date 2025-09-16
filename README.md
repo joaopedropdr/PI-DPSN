@@ -11,13 +11,13 @@
 - Aneliza Nardelli
 - João Pedro Pascuci De Russi
 - Luis Eduardo Abdo dos Santos
-# Sumario
-  - [1. Descrição da aplicação web](#1-descricao-da-aplicacao-web)
-    - [1.1 Introdução](#11-introducao)
-    - [1.2 Métodos da pesquisa](#12-metodo-de-pesquisa)
+# Sumário
+  - [1. Descrição da aplicação web](#1-descrição-da-aplicação-web)
+    - [1.1 Introdução](#11-introdução)
+    - [1.2 Métodos da pesquisa](#12-método-de-pesquisa)
   - [2. Documento de requisitos](#2-documento-de-requisitos)
     - [2.1. Requisitos funcionais](#21-requisitos-funcionais)
-    - [2.2. Requisitos não funcionais](#22-requisitos-nao-funcionais)
+    - [2.2. Requisitos não funcionais](#22-requisitos-não-funcionais)
 
 ## 1. Descrição da aplicação web
 ## 1.1 Introdução
