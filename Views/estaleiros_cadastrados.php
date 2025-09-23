@@ -76,7 +76,7 @@
                 <!--Estaleiro exemplo-->
                 <div class="col-md-6 col-lg-4">
                     <div class="card card-hover h-100 shadow-sm">
-                        <img src="#" class="card-img-top estaleiro-img" alt="Estaleiro Navalbras">
+                        <img src="#" class="card-img-top estaleiro-img" alt="Estaleiro 1">
                         <div class="card-body">
                             <h5 class="card-title">Estaleiro 1</h5>
                             <p class="card-text">Localizado em Itajaí/SC, especializado em construção e reparo naval.
@@ -87,7 +87,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card card-hover h-100 shadow-sm">
-                        <img src="#" class="card-img-top estaleiro-img" alt="Estaleiro Oceânica">
+                        <img src="#" class="card-img-top estaleiro-img" alt="Estaleiro 2">
                         <div class="card-body">
                             <h5 class="card-title">Estaleiro 2</h5>
                             <p class="card-text">Em Rio Grande/RS, atua na construção de embarcações de grande porte.
@@ -98,9 +98,9 @@
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card card-hover h-100 shadow-sm">
-                        <img src="#" class="card-img-top estaleiro-img" alt="Estaleiro Marítimo">
+                        <img src="#" class="card-img-top estaleiro-img" alt="Estaleiro 3">
                         <div class="card-body">
-                            <h5 class="card-title">Estaleiro 1</h5>
+                            <h5 class="card-title">Estaleiro 3</h5>
                             <p class="card-text">Localizado em Santos/SP, especializado em reparos e manutenção.</p>
                             <p class="card-text"><small class="text-muted">Cadastrado em: xx/xx/xxxx</small></p>
                         </div>
