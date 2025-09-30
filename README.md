@@ -18,8 +18,8 @@
   - [2. Documento de requisitos](#2-documento-de-requisitos)
     - [2.1. Requisitos funcionais](#21-requisitos-funcionais)
     - [2.2. Requisitos não funcionais](#22-requisitos-não-funcionais)
-  - [3. Regras de negócios](#3-regras-de-negócios)
-      - [3.1 Figura 1- Modelo de nogócio canvas](#31-figura1--modelo-de-nogócio-canvas)
+  - [3. Regras de negócios](#3-regras-de-negócio)
+      - [3.1 Figura 1- Modelo de nogócio canvas](#31-figura-1--modelo-de-nogócio-canvas)
       - [3.2 Proposta de valor](#32-proposta-de-valor)
       - [3.3 Parcerias-chaves](#33-parcerias-chaves)
       - [3.4 Recursos-chave](#34-recursos-chave)
@@ -83,7 +83,7 @@ O sistema deve criptografar os dados sensíveis de todos os usuários.
 ## 3. Regras de negócio
 ## 3.1 Figura 1- Modelo de nogócio canvas
 <div align="center">
-    <img alt="Figura 1 - Canvas, modelo de negócios" src="" width="550">
+    <img alt="Figura 1 - Canvas, modelo de negócios" src="./imgs/Modelo de negocios.png">
 </div>
 
 # 3.2 Proposta de valor 
