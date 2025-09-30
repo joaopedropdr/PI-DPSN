@@ -18,6 +18,18 @@
   - [2. Documento de requisitos](#2-documento-de-requisitos)
     - [2.1. Requisitos funcionais](#21-requisitos-funcionais)
     - [2.2. Requisitos não funcionais](#22-requisitos-não-funcionais)
+  - [3. Regras de negócios](#3-regras-de-negócios)
+      - [3.1 Figura 1- Modelo de nogócio canvas](#31-figura1--modelo-de-nogócio-canvas)
+      - [3.2 Proposta de valor](#32-proposta-de-valor)
+      - [3.3 Parcerias-chaves](#33-parcerias-chaves)
+      - [3.4 Recursos-chave](#34-recursos-chave)
+      - [3.5 Atividades-chave](#35-atividades-chave)
+      - [3.6 Relacionamento com cliente](#36-relacionamento-com-cliente)
+      - [3.7 Canais de distribuição](#37-canais-de-distribuição)
+      - [3.8 Segmento de clientes](#38-segmento-de-clientes)
+      - [3.9 Estrutura de custos](#39-estrutura-de-custos)
+      - [3.10 Fonte de receita](#310-fonte-de-receita)
+        
 
 ## 1. Descrição da aplicação web
 ## 1.1 Introdução
@@ -67,6 +79,45 @@ O sistema deve ser acessível para todos os tipos de usuários, incluindo aquele
 Os dados de cada usuário deve ser protegido. Cada usuário acessa os seus respectivos dados.
 ### **RNF 4 Criptografia de dados sensíveis**
 O sistema deve criptografar os dados sensíveis de todos os usuários.
+
+## 3. Regras de negócio
+## 3.1 Figura 1- Modelo de nogócio canvas
+<div align="center">
+    <img alt="Figura 1 - Canvas, modelo de negócios" src="" width="550">
+</div>
+
+# 3.2 Proposta de valor 
+Criar uma aplicação web para facilitar e automatizar o trabalho da empresa DPSN. E criar uma forma de armazenar seus documentos digitalmente, melhorando a organização e o gerenciamento deles.
+## 3.3 Parcerias-chaves
+- Empresa DPSN
+- Faculdade de Tecnologia de Jahu (Fatec Jahu)
+## 3.4 Recursos-chave
+- Ferramentas de desenvolvimento
+- Documentação
+- Organização da equipe
+## 3.5 Atividades-chave
+- Preencher automaticamente os documentos náuticos
+- Desenvolvimento e manutenção da aplicação
+## 3.6 Relacionamento com cliente
+- Feedback da empresa 
+- Contato com a empresa
+## 3.7 Canais de distribuição
+- O uso da aplicação pela empresa
+- Uso da aplicação pelos estaleiros parceiros da empresa
+## 3.8 Segmento de clientes
+- Tecnólogos 
+- Estaleiros parceiros da DPSN
+- Clientes dos estaleiros 
+- Empresas do ramo naval
+## 3.9 Estrutura de custos
+- Manutenção da aplicação
+- Hospedagem 
+- Suporte
+## 3.10 Fonte de receita
+- investimentos da própria empresa DPSN
+
+
+
 
 
 
