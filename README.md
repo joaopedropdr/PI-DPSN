@@ -29,6 +29,11 @@
       - [3.8 Segmento de clientes](#38-segmento-de-clientes)
       - [3.9 Estrutura de custos](#39-estrutura-de-custos)
       - [3.10 Fonte de receita](#310-fonte-de-receita)
+  - [4. Modelo de casos de uso](#4-modelo-de-casos-de-uso)
+      - [4.1 Figura 2- Modelo de casos de uso](#41-figura-2--modelo-de-casos-de-uso)  
+      - [4.2 Casos de uso de alto nível](#42-casos-de-uso-de-alto-nível)  
+      - [4.3 Casos de uso expandidos](#43-casos-de-uso-expandidos)  
+  
         
 
 ## 1. Descrição da aplicação web
@@ -115,6 +120,76 @@ Criar uma aplicação web para facilitar e automatizar o trabalho da empresa DPS
 - Suporte
 ## 3.10 Fonte de receita
 - investimentos da própria empresa DPSN
+## 4. Modelo de casos de uso
+## 4.1 Figura 2- Modelo de casos de uso
+<div align="center">
+    <img alt="Figura 1 - Canvas, modelo de negócios" src="./imgs/modeloUso.jpg">
+</div>
+
+## 4.2 Casos de uso de alto nível
+### 1- Cadastrar Administrador
+- Atores: Administrador (Autocadastro).
+- Tipo: Secundário.
+- Descrição: Permite que um futuro Administrador/Tecnólogo crie uma conta no sistema para começar a gerenciar estaleiros e documentos.
+### 2- Cadastrar estaleiro
+- Atores: Administrador.
+- Tipo: Primário.
+- Descrição: O Administrador insere as informações necessárias (nome, CNPJ, contato, etc.) para criar o registro de um Estaleiro parceiro no sistema.
+### 3- Cadastrar embarcação
+- Atores: Administrador.
+- Tipo: Primário.
+- Descrição: O Administrador registra os modelos de embarcações de um Estaleiro específico no sistema, associando-as ao respectivo parceiro.
+###  4- Gerenciar dados do estaleiro
+- Atores: Estaleiro.
+- Tipo: Secundário.
+- Descrição: Permite que o Estaleiro autenticado no sistema acesse e modifique suas informações cadastrais (exceto identificadores únicos) e altere sua senha.
+### 5- Realizar login 
+- Atores: Administrador, Estaleiro.
+- Tipo: Secundário.
+- Descrição: O usuário (Administrador ou Estaleiro) insere suas credenciais de acesso para entrar no sistema.
+### 6- Realizar logout
+- Atores: Administrador, Estaleiro.
+- Tipo: Secundário.
+- Descrição: O usuário (Administrador ou Estaleiro) encerra sua sessão de forma segura no sistema.
+### 7- Vizualizar embarcações cadastradas 
+- Atores: Estaleiro, Administrador.
+- Tipo: Secundário.
+- Descrição: O usuário acessa uma lista das embarcações cadastradas no sistema e pode visualizar os detalhes de cada modelo.
+### 8- Apagar documentos PDFs antigos 
+- Atores: Sistema (Automatizado).
+- Tipo: Secundário.
+- Descrição: O sistema executa uma rotina automática a cada 30 dias para excluir os arquivos PDF armazenados, mantendo os dados do documento no banco de dados.
+
+## 4.3 Casos de uso expandidos
+### 1- Emitir Dados do Cliente e da Embarcação
+- Atores: Estaleiro (iniciador), Administrador.
+- Finalidade: Coletar as informações necessárias do cliente e da transação de venda da embarcação para iniciar a geração do documento náutico.
+- Visão Geral: O Estaleiro (ou Administrador, agindo em nome de um Estaleiro) acessa a funcionalidade de emissão e insere os dados obrigatórios do cliente (nome, endereço, etc.) e da embarcação vendida, incluindo o modelo e a data da transação. Estes dados são validados e salvos para acionar a geração do documento.
+- Tipo: Primário e Essencial.
+- Referências Cruzadas: RF 6.
+### 2- Gerar Documento PDF
+- Atores: Sistema (iniciador automático após a emissão dos dados).
+- Finalidade: Criar o arquivo de documento náutico padronizado (Termo de Responsabilidade, Declaração, etc.) no formato PDF com base nos dados fornecidos e deixá-lo disponível para assinatura e download.
+- Visão Geral: Após a submissão bem-sucedida dos dados do cliente e da embarcação (Caso de Uso "Emitir Dados..."), o Sistema processa essas informações. Ele seleciona o modelo de documento correto para a embarcação, preenche o template automaticamente e converte o resultado final para um arquivo PDF seguro. O sistema armazena o PDF e notifica o Administrador/Tecnólogo sobre o novo documento pendente.
+- Tipo: Primário e Essencial.
+- Referências Cruzadas: RF 8.
+### 3- Fazer Upload do Documento PDF Assinado
+- Atores: Administrador (Tecnólogo, iniciador).
+- Finalidade: Permitir que o Tecnólogo Naval anexe a versão final e legalmente assinada do documento náutico ao registro do sistema, concluindo o ciclo de documentação.
+- Visão Geral: O Administrador (Tecnólogo), após ter baixado o PDF gerado, aplicado sua assinatura digital de forma segura e validado o documento, retorna à plataforma. Ele seleciona o documento correspondente e faz o upload do novo arquivo PDF assinado, substituindo ou marcando o original. O sistema registra o upload e o documento passa ao status de "Assinado".
+- Tipo: Primário e Essencial.
+- Referências Cruzadas: RF 9.
+### 4- Solicitar Novo Documento PDF
+- Atores: Estaleiro (iniciador), Administrador.
+- Finalidade: Regenerar o arquivo PDF de um documento antigo, cujos dados persistem no banco de dados, mas o arquivo PDF foi automaticamente excluído pela rotina de limpeza.
+- Visão Geral: O usuário (Estaleiro ou Administrador) localiza um registro de documento náutico antigo no sistema. Ao verificar que o PDF não está mais disponível, ele aciona a função de "Solicitar Novo PDF". O Sistema acessa os dados salvos do documento e executa novamente o processo de geração de PDF (similar ao Caso de Uso 2), disponibilizando o novo arquivo para download.
+- Tipo: Primário e Essencial.
+- Referências Cruzadas: RF 11.
+
+
+
+
+
 
 
 

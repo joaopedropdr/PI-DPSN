@@ -30,7 +30,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="ligth">
             <div class="container-fluid">
                 <div>
-                    <a class="navbar-brand" href="#"><img src="../imgs/LOGO_colorido-svg.svg" alt="Logo da empresa"class="logo"></a>
+                    <a class="navbar-brand" href="#"><img src="imgs/LOGO_colorido-svg.svg" alt="Logo da empresa"class="logo"></a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
