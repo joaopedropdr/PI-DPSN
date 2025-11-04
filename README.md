@@ -8,7 +8,7 @@
 ---
 # Documento da aplicação web
 ### Autores
-- Aneliza Nardelli
+- Anelize Nardelli
 - João Pedro Pascuci De Russi
 - Luis Eduardo Abdo dos Santos
 # Sumário
@@ -32,7 +32,9 @@
   - [4. Modelo de casos de uso](#4-modelo-de-casos-de-uso)
       - [4.1 Figura 2- Modelo de casos de uso](#41-figura-2--modelo-de-casos-de-uso)  
       - [4.2 Casos de uso de alto nível](#42-casos-de-uso-de-alto-nível)  
-      - [4.3 Casos de uso expandidos](#43-casos-de-uso-expandidos)  
+      - [4.3 Casos de uso expandidos](#43-casos-de-uso-expandidos)
+  - [5. Diagrama de Classes](#5-diagrama-de-classes) 
+  
   
         
 
@@ -185,6 +187,36 @@ Criar uma aplicação web para facilitar e automatizar o trabalho da empresa DPS
 - Visão Geral: O usuário (Estaleiro ou Administrador) localiza um registro de documento náutico antigo no sistema. Ao verificar que o PDF não está mais disponível, ele aciona a função de "Solicitar Novo PDF". O Sistema acessa os dados salvos do documento e executa novamente o processo de geração de PDF (similar ao Caso de Uso 2), disponibilizando o novo arquivo para download.
 - Tipo: Primário e Essencial.
 - Referências Cruzadas: RF 11.
+
+## 5. Diagrama de classes
+### 1- classe administrador
+| Nome | administrador |
+|:---|:---|
+| Atributos | id_administrador |
+| Métodos | fazerLogin() |
+### 2- classe estaleiro
+| Nome | estaleiro |
+|:---|:---|
+| Atributos | id_estaleiro |
+| Métodos | emitiDadosCliente() |
+### 3- classe clientes
+| Nome | clientes |
+|:---|:---|
+| Atributos | id_clientes |
+| Métodos |  |
+### 4- classe embarcações
+| Nome | embarcacoes |
+|:---|:---|
+| Atributos | id_embarcacao |
+| Métodos | atualizarDados() |
+### 5- classe documentos
+| Nome | documentos |
+|:---|:---|
+| Atributos | id_documento |
+| Métodos | gerarPdf() |
+
+
+
 
 
 
