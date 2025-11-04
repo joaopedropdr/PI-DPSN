@@ -1,3 +1,6 @@
+<?php
+require_once "navbar_adm.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -118,6 +121,10 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+</main>
+<?php
+require_once "footer.html";
+?>
 </body>
-
 </html>
