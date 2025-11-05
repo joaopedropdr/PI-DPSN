@@ -8,8 +8,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/e04725def3.js" crossorigin="anonymous"></script>
     <style>
+        .gradiente-bg {
+            background-image: linear-gradient(to right, #135A9A 0%, #89B9E4 50%, #135A9A 100%);
+        }
+
         body {
-            background-color: #89B9E4; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -39,13 +42,13 @@
 
     </style>
 </head>
-<body>
+<body class="gradiente-bg">
     <div class=" p-5 rounded text-center login-card">
         <h1 class="display-5 fw-bold text-dark-blue mb-2">Gerenciador - DPSN</h1>
         <p class=" mb-4">Bem-vindo ao nosso gerenciador de documentos náuticos!</p>
-        <img src="../imgs/LOGO_colorido-svg.svg" alt="Logo DPSN" class="logo-img">
+        <img src="imgs/LOGO_colorido-svg.svg" alt="Logo DPSN" class="logo-img">
         <div class=" gap-3 d-sm-flex justify-content-sm-center">
-            <a href="#" class="btn btn-primary btn-lg px-4 me-sm-3 rounded-pill border border-0">Entrar como estaleiro</a>
+            <a href="index.php?controle=estaleiroController&metodo=login" class="btn btn-primary btn-lg px-4 me-sm-3 rounded-pill border border-0">Entrar como estaleiro</a>
             
             <a href="#" class="btn btn-primary btn-lg px-4 rounded-pill border border-0">Entrar como administrador</a>
         </div>

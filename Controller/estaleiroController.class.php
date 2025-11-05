@@ -92,5 +92,10 @@
             } // Fim if($post)
             require_once "Views/cadastrar_estaleiro.php";
         } // Fim do método inserir
+
+        public function login() {
+            // Fazer login
+            require_once "Views/entrar.estaleiro.php";
+        } // Fim do método inserir
     }
 ?>
