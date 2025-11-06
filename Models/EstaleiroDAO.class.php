@@ -52,6 +52,20 @@
 				$this->db = null; 
 				return "Problema ao validar o e-mail";
             }
+        } // Fim método verificarEmail
+
+        public function login(Estaleiro $Estaleiro) {
+            $sql = "SELECT * FROM estaleiros WHERE email = ?";
+            try{
+                $stm=$this->db->prepare($sql);
+                $stm->bindValue(1, $Estaleiro->getEmail());
+                $stm->execute();
+                $this->db = null;
+                return $stm->fetchAll(PDO::FETCH_OBJ);
+            } catch(PDOException $e) {
+                $this->db = null;
+                return "Problema ao realizar o login";
+            }
         }
     } 
 ?>

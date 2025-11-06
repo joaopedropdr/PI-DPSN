@@ -1,5 +1,10 @@
 <?php
+    if (!isset($_SESSION)) {
+        session_start();
+    }
     require_once "navbar_est.php";
+
+
 ?>
     <style>
         .card-custom:hover {
@@ -27,8 +32,12 @@
         }
     </style>
     <div class="container py-5 text-center cor-texto">
-        <h1 class="display-4 fw-bold mb-3">Painel do Estaleiro</h1>
-        <p class="lead mb-5">Bem-vindo(a) ao seu painel de controle.</p>
+        <h1 class="display-4 fw-bold mb-3">Painel do Estaleiro</h1>    
+        <?php
+            if(isset($_SESSION["id"])) {
+                echo "<p class='lead mb-5'>Bem-vindo(a) <strong>" . htmlspecialchars($_SESSION['nome']) . "</strong> ao seu painel de controle.</p>";
+            } 
+        ?>
 
         <div class="row justify-content-center g-5">
             <div class="col-12 col-md-6 card-tamanho">
