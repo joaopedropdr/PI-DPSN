@@ -146,6 +146,6 @@
             $_SESSION = array();
 			session_destroy();
 			header("location:index.php");
-        }
+        } // Fim do método logout
     }
 ?>
