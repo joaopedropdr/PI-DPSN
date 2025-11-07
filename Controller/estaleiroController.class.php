@@ -92,5 +92,62 @@
             } // Fim if($post)
             require_once "Views/cadastrar_estaleiro.php";
         } // Fim do método inserir
+
+        public function login() {
+            $msg = array("", "", "");
+            $erro = false;
+            if($_POST) {
+                if(empty($_POST["email_login"])) {
+                    $msg[0] = "Digite seu e-mail!";
+                    $erro = true;
+                }
+
+                if(empty($_POST["senha_login"])) {
+                    $msg[1] = "Digite a sua senha!";
+                    $erro = true;
+                }
+                if(!$erro) {
+                    $Estaleiro = new Estaleiro(email:$_POST["email_login"]);
+                    $EstaleiroDAO = new EstaleiroDAO();
+                    $retorno = $EstaleiroDAO->login($Estaleiro);
+                    if(is_array($retorno)) {
+                        if(count($retorno) > 0) {
+                            // Verifica se a senha corresponde
+                            if(password_verify($_POST["senha_login"], $retorno[0]->senha)) {
+                                if(!isset($_SESSION)) {
+                                    session_start();
+                                }
+                                $_SESSION["id"] = $retorno[0]->id_estaleiro;
+                                $_SESSION["nome_empresa"] = $retorno[0]->nome_empresa;
+                                $_SESSION["nome"] = $retorno[0]->nome;
+                                $_SESSION["cnpj"] = $retorno[0]->cnpj;
+                                $_SESSION["telefone"] = $retorno[0]->telefone;
+                                $_SESSION["cep"] = $retorno[0]->cep;
+                                $_SESSION["logradouro"] = $retorno[0]->logradouro;
+                                $_SESSION["numero"] = $retorno[0]->numero;
+                                $_SESSION["complementos"] = $retorno[0]->complementos;
+                                $_SESSION["bairro"] = $retorno[0]->bairro;
+                                $_SESSION["cidade"] = $retorno[0]->cidade;
+                                $_SESSION["estado"] = $retorno[0]->estado;
+                                $_SESSION["email"] = $retorno[0]->email;
+                                header("location:index.php?controle=inicioController&metodo=inicioEstaleiro");
+                            } else {
+                                $msg[2] = "Dados incorreto, verifique os dados digitados";
+                            }
+                        } else {
+                            $msg[2] = "Dados incorreto, verifique os dados digitados";
+                        } 
+                    }
+                }
+            }
+            require_once "Views/entrar.estaleiro.php";
+        } // Fim do método login
+
+        public function logout() {
+            if(!isset($_SESSION)) session_start();
+            $_SESSION = array();
+			session_destroy();
+			header("location:index.php");
+        }
     }
 ?>

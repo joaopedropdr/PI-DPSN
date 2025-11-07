@@ -9,9 +9,11 @@
     
     <title>Gerenciador - DPSN</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-</head>
-<body class="bg-cor d-flex flex-column min-vh-100"> 
     <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+
         .logo {
             width: 100px;
             height: 70px;
@@ -20,13 +22,40 @@
             width: 200px;
             height: 200px;
         }
-        .bg-cor {
-            background-color: #89B9E4;
+        .gradiente-bg {
+            background-image: linear-gradient(to right, #135A9A 0%, #89B9E4 50%, #135A9A 100%);
         }
         .bg-footer {
             background-color: #091E31;
         }
+
+        .custom-underline {
+            position: relative; 
+            text-decoration: none; 
+            display: inline-block;
+        }
+
+        .custom-underline::after {
+            content: '';
+            position: absolute; 
+            left: 0; 
+            bottom: -3px; 
+            width: 100%; 
+            height: 2px;
+            background-color: #091E31;   
+            transform: scaleX(0); 
+            transform-origin: bottom left; 
+            transition: transform 0.3s ease-out;
+        }
+
+        .custom-underline:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left; 
+            font-weight: bold;
+        }
     </style> 
+</head>
+<body class="gradiente-bg d-flex flex-column min-vh-100"> 
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="ligth">
             <div class="container-fluid">
                 <div>
@@ -38,21 +67,21 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                            <a class="nav-link custom-underline" aria-current="page" href="#">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?controle=usuarioController&metodo=inserir">Emitir documento</a>
+                            <a class="nav-link custom-underline" href="index.php?controle=usuarioController&metodo=inserir">Emitir documento</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Baixar documento</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Estaleiros</a>
+                            <a class="nav-link custom-underline" href="#">Baixar documento</a>
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link custom-underline" href="#">Estaleiros</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link custom-underline" href="#">Logout</a>
                         </li>
                     </ul>
                 </div>

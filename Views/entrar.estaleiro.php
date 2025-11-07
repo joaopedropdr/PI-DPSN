@@ -11,8 +11,11 @@
       font-family: 'Noto Sans', sans-serif;
       background-color: #f4faff;
     }
+    .gradiente-bg {
+      background-image: linear-gradient(to right, #135A9A 0%, #89B9E4 50%, #135A9A 100%);
+    }
     .border-dpsn {
-      border: 5px solid #5FA8D3 !important;
+      border: 5px solid #0C3252 !important;
     }
     .text-dpsn {
       color: #5FA8D3 !important;
@@ -26,13 +29,13 @@
     }
   </style>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 gradiente-bg">
 
   <!-- Topo -->
   <div class="container-fluid position-relative py-3">
-    <a href="#" class="text-dpsn text-decoration-none position-absolute start-0 ms-4">← Voltar</a>
+    <a href="#" class="text-white text-decoration-none position-absolute start-0 ms-4">← Voltar</a>
     <div class="position-absolute end-0 me-4 d-flex align-items-center">
-      <img src="../imgs/LOGO_colorido-svg.svg" alt="Logo" width="24" class="me-2">
+      <img src="imgs/LOGO_colorido-svg.svg" alt="Logo" width="24" class="me-2">
       <span class="fw-semibold text-secondary">DPSN</span>
     </div>
   </div>
@@ -43,7 +46,7 @@
       
       <!-- Lado esquerdo -->
       <div class="col-lg-5 bg-light d-flex flex-column justify-content-center align-items-center text-center p-4">
-        <img src="../imgs/LOGO_colorido-svg.svg" alt="Logo DPSN" width="100" class="mb-3">
+        <img src="imgs/LOGO_colorido-svg.svg" alt="Logo DPSN" width="100" class="mb-3">
         <h4 class="fw-bold text-secondary mb-2">DPSN</h4>
         <p class="small text-secondary mb-0">
           Solução que a DPSN faz pelas<br>empresas de embarcações.
@@ -59,15 +62,17 @@
           Insira suas credenciais para acessar o sistema.
         </p>
 
-        <form>
+        <form method="post">
           <div class="mb-3">
             <label for="email" class="form-label">E-mail</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Digite aqui o e-mail cadastrado">
+            <input type="email" id="email" name="email_login" class="form-control" placeholder="Digite aqui o e-mail cadastrado">
+            <div class="text-danger"><?php echo $msg[0];?></div>
           </div>
 
           <div class="mb-3">
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" id="senha" name="senha" class="form-control" placeholder="Digite aqui a sua senha de acesso">
+            <input type="password" id="senha" name="senha_login" class="form-control" placeholder="Digite aqui a sua senha de acesso">
+            <div class="text-danger"><?php echo $msg[1];?></div>
           </div>
 
           <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
