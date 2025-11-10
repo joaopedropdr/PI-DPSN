@@ -15,6 +15,7 @@ require_once "navbar_adm.php";
 
     <style>
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #89B9E4;
             font-family: 'Noto Sans', sans-serif;
         }
