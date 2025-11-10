@@ -10,11 +10,13 @@ require_once "navbar_adm.php";
     <title>Estaleiros Cadastrados</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fonte Noto Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
         body {
             background-color: #89B9E4;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Noto Sans', sans-serif;
         }
 
         .title-color {
@@ -66,11 +68,13 @@ require_once "navbar_adm.php";
                 <i class="fas fa-arrow-left me-2"></i>Voltar
             </a>
         </div>
+
         <!-- Título -->
         <div class="text-center mb-5">
             <h1 class="title-color fw-bold display-4 mb-3">Estaleiros</h1>
             <h2 class="title-color fs-5">Todos os cadastros de Estaleiros no sistema.</h2>
         </div>
+
         <!--Cards-->
         <div class="mb-5">
             <h3 class="fw-semibold title-color mb-3 text-center">Estaleiros cadastrados</h3>
@@ -82,8 +86,7 @@ require_once "navbar_adm.php";
                         <img src="#" class="card-img-top estaleiro-img" alt="Estaleiro 1">
                         <div class="card-body">
                             <h5 class="card-title">Estaleiro 1</h5>
-                            <p class="card-text">Localizado em Itajaí/SC, especializado em construção e reparo naval.
-                            </p>
+                            <p class="card-text">Localizado em Itajaí/SC, especializado em construção e reparo naval.</p>
                             <p class="card-text"><small class="text-muted">Cadastrado em: 12/05/2023</small></p>
                         </div>
                     </div>
@@ -93,9 +96,8 @@ require_once "navbar_adm.php";
                         <img src="#" class="card-img-top estaleiro-img" alt="Estaleiro 2">
                         <div class="card-body">
                             <h5 class="card-title">Estaleiro 2</h5>
-                            <p class="card-text">Em Rio Grande/RS, atua na construção de embarcações de grande porte.
-                            </p>
-                            <p class="card-text"><small class="text-muted">Cadastrado em:xx/xx/xxxx</small></p>
+                            <p class="card-text">Em Rio Grande/RS, atua na construção de embarcações de grande porte.</p>
+                            <p class="card-text"><small class="text-muted">Cadastrado em: xx/xx/xxxx</small></p>
                         </div>
                     </div>
                 </div>
@@ -111,17 +113,22 @@ require_once "navbar_adm.php";
                 </div>
             </div>
         </div>
+
         <!-- Botão adicionar estaleiro -->
         <div class="mt-5 pt-4 text-center">
-            <h3 class="fw-semibold title-color mb-3">Outras ações</h3>
+            <h3 class="fw-semibold title-color mb-3" >Outras ações</h3>
             <div class="divider"></div>
             <button class="btn btn-custom btn-lg">
-                Cadastrar Estaleiro <i class="fas fa-plus-circle me-2"></i>
+                <a href="index.php?controle=estaleiroController&metodo=inserir">
+                    Cadastrar Estaleiro <i class="fas fa-plus-circle me-2"></i>
+                </a>
             </button>
+
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
 </main>
 <?php
 require_once "footer.html";
