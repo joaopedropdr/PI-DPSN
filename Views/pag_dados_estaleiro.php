@@ -20,7 +20,6 @@
             margin-bottom: 1.5rem; /* Espaçamento entre os blocos de dados */
             word-wrap: break-word; /* Garante que textos longos se ajustem */
         }
-
         .btn-salvar {
             background-color: #0C3252;
             transition: all 0.3s ease;

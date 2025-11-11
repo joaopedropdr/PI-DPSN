@@ -14,5 +14,4 @@
 		{
 			require_once "Views/pag_dados_estaleiro.php";
 		}
-    }
 ?>

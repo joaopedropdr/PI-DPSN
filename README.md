@@ -189,31 +189,48 @@ Criar uma aplicação web para facilitar e automatizar o trabalho da empresa DPS
 - Referências Cruzadas: RF 11.
 
 ## 5. Diagrama de classes
+### As tabelas abaixo mostra o nosso diagrama de classes
 ### 1- classe administrador
-| Nome | administrador |
-|:---|:---|
-| Atributos | id_administrador |
-| Métodos | fazerLogin() |
+| Nome | administradores |
+| :---- | :---- |
+| Atributos | id\_administrador BIGINT UNSIGNED AUTO\_INCREMENT PRIMARY KEY,  email VARCHAR(100) UNIQUE NOT NULL senha VARCHAR(255) NOT NULL, nome VARCHAR(100) NOT NULL, data DATETIME NOT NULL esta\_ativo BOOLEAN DEFAULT TRUE |
+| Métodos | fazerLogin(email, senha), atualizarDados(dados) |
+
 ### 2- classe estaleiro
-| Nome | estaleiro |
-|:---|:---|
-| Atributos | id_estaleiro |
-| Métodos | emitiDadosCliente() |
-### 3- classe clientes
-| Nome | clientes |
-|:---|:---|
-| Atributos | id_clientes |
-| Métodos |  |
-### 4- classe embarcações
+| Nome | estaleiros |
+| :---- | :---- |
+| Atributos | id\_estaleiro BIGINT UNSIGNED AUTO\_INCREMENT PRIMARY KEY,  nome VARCHAR(100) NOT NULL, nome\_empresa VARCHAR(100) NOT NULL, cnpj VARCHAR(18) UNIQUE NOT NULL, endereco VARCHAR(255) NOT NULL, cep VARCHAR(10) NOT NULL ,telefone VARCHAR(50) NOY NULL ,email VARCHAR(100) UNIQUE NOT NULL, senha VARCHAR(255) NOT NULL, data DATETIME NOT NULL |
+| Métodos | crudEmbarcacoes(dadosEmbarcacao), crudClientes(dadosCliente), crudVendas(dadosVenda), solicitarNovoPDF(id\_documento), visualizarMeusDocumentos() |
+
+### 3- classe embarcações
 | Nome | embarcacoes |
-|:---|:---|
-| Atributos | id_embarcacao |
-| Métodos | atualizarDados() |
-### 5- classe documentos
+| :---- | :---- |
+| Atributos | id\_embarcaao BIGINT UNSIGNED AUTO\_INCREMENT PRIMARY KEY,  estaleiro\_id BIGINT USINGNED NOT NULL FOREIGN KEY (estaleiro\_id) REFERENCES estaleiros(id\_estaleiro), nome VARCHAR(255) NULL, comprimento\_total DECIMAL(8,2), NOT NULL boca\_moldada  DECIMAL(8,2) NOT NULL, pontal\_moldado DECIMAL(8,2) NOT NULL, calado\_maximo DECIMAL(8,2) NOT NULL, calado\_leve DECIMAL(8,2) NOT NULL, arqueacao\_bruta DECIMAL(8,2) NOT NULL, arqueacao\_liquida DECIMAL(8,2) NOT NULL, tpb DECIMAL(8,2) NOT NULL, contorno DECIMAL(8,2) NOT NULL, lastro DECIMAL(8,2) NULL, area\_navegacao\_tipo\_servico VARCHAR(255) NOT NULL, tipo\_embarcacao VARCHAR(255) NOT NULL, material\_casco VARCHAR(255) NOT NULL, motorizacao\_max INT NOT NULL, motorizacao\_min INT NOT NULL, data DATETIME NOT NULL  |
+| Métodos | crudEmbarcacoes(dadosEmbarcacao), atualizarDados(dados) |
+
+### 4- classe clientes
+| Nome | clientes |
+| :---- | :---- |
+| Atributos | id\_cliente BIGINT UNSIGNED AUTO\_INCREMENT PRIMARY KEY,  nome VARCHAR(100) NOT NULL, cpf\_cnpj VARCHAR(18) UNIQUE NOT NULL, endereco VARCHAR(255) NOT NULL, ano\_construcao YEAR NOT NULL, chassi\_emb VARCHAR(255) NOT NULL, data DATETIME NOT NULL |
+| Métodos |  |
+
+### 5- classe clientes_estaleiros
+| Nome | clientes\_estaleiros |
+| :---- | :---- |
+| Atributos | id\_cliente\_estaleiro BIGINT UNSIGNED AUTO\_INCREMENT PRIMARY KEY,  estaleiro\_id FOREIGN KEY  (estaleiro\_id ) references estaleiros(id\_estaleiro), cliente\_id FOREIGN KEY (id\_cliente) references clientes(id\_cliente), data DATETIME NOT NULL |
+| Métodos |  |
+
+### 6- classe clientes_administradores
+| Nome | clientes\_administradores |
+| :---- | :---- |
+| Atributos | id\_cliente\_administrador BIGINT UNSIGNED AUTO\_INCREMENT PRIMARY KEY,  cliente\_id FOREIGN KEY  (cliente\_id ) references clientes(id\_cliente), administrador\_id  FOREIGN KEY (administrador\_id) references administradores(id\_administrador),  data DATETIME NOT NULL |
+| Métodos |  |
+
+### 7- classe documentos
 | Nome | documentos |
-|:---|:---|
-| Atributos | id_documento |
-| Métodos | gerarPdf() |
+| :---- | :---- |
+| Atributos | id\_documento BIGINT UNSIGNED AUTO\_INCREMENT PRIMARY KEY,  estaleiro\_id INT FOREIGN KEY (estaleiro\_id ) references estaleiros(id\_estaleiro) NULL, administrador\_id  FOREIGN KEY (administrador\_id) references administradores(id\_administrador) NULL, embarcacao\_id INT FOREIGN KEY (embarcacao\_id ) references embarcacoes(id\_embarcacao), cliente\_id INT FOREIGN KEY (cliente\_id ) references clientes(id\_cliente), data\_emissao DATETIME NOT NULL, status\_documento; ENUM('Assinatura Pendente', 'Assinado', 'Expirado') DEFAULT Assinatura Pendente', caminho\_pdf VARCHAR(255) NULL, data\_expiracao\_pdf DATETIME NULL |
+| Métodos | gerarPDF() baixarPDF() expirarPDF() |
 
 
 

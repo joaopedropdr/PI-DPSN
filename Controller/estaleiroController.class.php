@@ -130,6 +130,10 @@
                                 $_SESSION["cidade"] = $retorno[0]->cidade;
                                 $_SESSION["estado"] = $retorno[0]->estado;
                                 $_SESSION["email"] = $retorno[0]->email;
+                                $_SESSION["bairro"] = $retorno[0]->bairro;
+                                $_SESSION["cidade"] = $retorno[0]->cidade;
+                                $_SESSION["estado"] = $retorno[0]->estado;
+
                                 header("location:index.php?controle=inicioController&metodo=inicioEstaleiro");
                             } else {
                                 $msg[2] = "Dados incorreto, verifique os dados digitados";
