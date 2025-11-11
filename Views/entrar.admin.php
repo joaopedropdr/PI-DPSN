@@ -4,19 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DPSN - Login Administrador</title>
-  
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  
   <!-- Fonte Noto Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
-  
   <style>
     body {
       font-family: 'Noto Sans', sans-serif;
       background-color: #f4faff;
       margin: 0;
       padding: 0;
+    }
+
+    .gradiente-bg {
+      background-image: linear-gradient(to right, #135A9A 0%, #89B9E4 50%, #135A9A 100%);
     }
 
     .login-container {
@@ -161,12 +162,12 @@
     }
   </style>
 </head>
-<body>
+<body class="gradiente-bg">
 
   <a href="#" class="voltar">← Voltar</a>
 
   <div class="logo-topo">
-    <img src="../imgs/LOGO_colorido-svg.svg" alt="Logo DPSN">
+    <img src="imgs/LOGO_colorido-svg.svg" alt="Logo DPSN">
     <span>DPSN</span>
   </div>
 
@@ -175,7 +176,7 @@
 
       <!-- Lado esquerdo -->
       <div class="login-left">
-        <img src="../imgs/LOGO_colorido-svg.svg" alt="Logo DPSN">
+        <img src="imgs/LOGO_colorido-svg.svg" alt="Logo DPSN">
         <h3>DPSN</h3>
         <p>Solução que a DPSN faz pelas empresas de embarcações.</p>
       </div>
