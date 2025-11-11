@@ -34,6 +34,8 @@
       - [4.2 Casos de uso de alto nível](#42-casos-de-uso-de-alto-nível)  
       - [4.3 Casos de uso expandidos](#43-casos-de-uso-expandidos)
   - [5. Diagrama de Classes](#5-diagrama-de-classes) 
+  - [6. Diagrama Entidade-Relacionamento](#6-diagrama-entidade-relacionamento) 
+    - [6 1. Figura 3- Diagrama Entidade-Relacionamento](#61-figura-3-diagrama-entidade-relacionamento) 
   
   
         
@@ -125,7 +127,7 @@ Criar uma aplicação web para facilitar e automatizar o trabalho da empresa DPS
 ## 4. Modelo de casos de uso
 ## 4.1 Figura 2- Modelo de casos de uso
 <div align="center">
-    <img alt="Figura 1 - Canvas, modelo de negócios" src="./imgs/modeloUso.jpg">
+    <img alt="Figura 2 - Modelo de casos de uso" src="./imgs/modeloUso.jpg">
 </div>
 
 ## 4.2 Casos de uso de alto nível
@@ -231,6 +233,13 @@ Criar uma aplicação web para facilitar e automatizar o trabalho da empresa DPS
 | :---- | :---- |
 | Atributos | id\_documento BIGINT UNSIGNED AUTO\_INCREMENT PRIMARY KEY,  estaleiro\_id INT FOREIGN KEY (estaleiro\_id ) references estaleiros(id\_estaleiro) NULL, administrador\_id  FOREIGN KEY (administrador\_id) references administradores(id\_administrador) NULL, embarcacao\_id INT FOREIGN KEY (embarcacao\_id ) references embarcacoes(id\_embarcacao), cliente\_id INT FOREIGN KEY (cliente\_id ) references clientes(id\_cliente), data\_emissao DATETIME NOT NULL, status\_documento; ENUM('Assinatura Pendente', 'Assinado', 'Expirado') DEFAULT Assinatura Pendente', caminho\_pdf VARCHAR(255) NULL, data\_expiracao\_pdf DATETIME NULL |
 | Métodos | gerarPDF() baixarPDF() expirarPDF() |
+
+## 6. Diagrama Entidade-Relacionamento
+## 6.1 Figura 3-Diagrama Entidade-Relacionamento 
+<div align="center">
+    <img alt="Figura 3 - Diagrama Entidade-Relacionamento" src="./imgs/modeloEER.png">
+</div>
+
 
 
 
