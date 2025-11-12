@@ -33,7 +33,7 @@
 
   <!-- Topo -->
   <div class="container-fluid position-relative py-3">
-    <a href="#" class="text-white text-decoration-none position-absolute start-0 ms-4">← Voltar</a>
+    <a href="index.php" class="text-white text-decoration-none position-absolute start-0 ms-4">← Voltar</a>
     <div class="position-absolute end-0 me-4 d-flex align-items-center">
       <img src="imgs/LOGO_colorido-svg.svg" alt="Logo" width="24" class="me-2">
       <span class="fw-semibold text-secondary">DPSN</span>
@@ -63,6 +63,7 @@
         </p>
 
         <form method="post">
+          <div class="text-danger"><?php echo $msg[2];?></div>
           <div class="mb-3">
             <label for="email" class="form-label">E-mail</label>
             <input type="email" id="email" name="email_login" class="form-control" placeholder="Digite aqui o e-mail cadastrado">

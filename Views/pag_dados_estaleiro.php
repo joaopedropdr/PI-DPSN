@@ -2,8 +2,12 @@
     if (!isset($_SESSION)) {
         session_start();
     }
-    require_once "navbar_est.php";
-?>
+    if (isset($_SESSION["id_administrador"])) {
+        require_once "navbar_adm.php";
+    } else {
+        require_once "navbar_est.php";
+    }
+    ?>
     <style>
         .shipyard-card {
             border-radius: 12px;
@@ -52,7 +56,7 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Nome</h6>
                         <?php
-                            if(isset($_SESSION["id"])) {
+                            if(isset($_SESSION["id_estaleiro"])) {
                                 echo "<p class='data-value'>" . htmlspecialchars($_SESSION['nome']) . "</p>";
                             } 
                         ?>
@@ -61,7 +65,7 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Nome da empresa</h6>
                         <?php
-                            if(isset($_SESSION["id"])) {
+                            if(isset($_SESSION["id_estaleiro"])) {
                                 echo "<p class='data-value'>" . htmlspecialchars($_SESSION['nome_empresa']) . "</p>";
                             } 
                         ?>                        
@@ -70,7 +74,7 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">CNPJ</h6>
                         <?php
-                            if(isset($_SESSION["id"])) {
+                            if(isset($_SESSION["id_estaleiro"])) {
                                 echo "<p class='data-value'>" . htmlspecialchars($_SESSION['cnpj']) . "</p>";
                             } 
                         ?>  
@@ -79,7 +83,7 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Telefone</h6>
                         <?php
-                            if(isset($_SESSION["id"])) {
+                            if(isset($_SESSION["id_estaleiro"])) {
                                 echo "<p class='data-value'>" . htmlspecialchars($_SESSION['telefone']) . "</p>";
                             } 
                         ?>  
@@ -88,7 +92,7 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">E-mail</h6>
                         <?php
-                            if(isset($_SESSION["id"])) {
+                            if(isset($_SESSION["id_estaleiro"])) {
                                 echo "<p class='data-value'>" . htmlspecialchars($_SESSION['email']) . "</p>";
                             } 
                         ?>  
@@ -97,7 +101,7 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">CEP</h6>
                         <?php
-                            if(isset($_SESSION["id"])) {
+                            if(isset($_SESSION["id_estaleiro"])) {
                                 echo "<p class='data-value'>" . htmlspecialchars($_SESSION['cep']) . "</p>";
                             } 
                         ?>  
@@ -106,7 +110,7 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Logradouro</h6>
                         <?php
-                            if(isset($_SESSION["id"])) {
+                            if(isset($_SESSION["id_estaleiro"])) {
                                 echo "<p class='data-value'>" . htmlspecialchars($_SESSION['logradouro']) . "</p>";
                             } 
                         ?>  
@@ -115,7 +119,7 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Numero</h6>
                         <?php
-                            if(isset($_SESSION["id"])) {
+                            if(isset($_SESSION["id_estaleiro"])) {
                                 echo "<p class='data-value'>" . htmlspecialchars($_SESSION['numero']) . "</p>";
                             } 
                         ?>  
@@ -124,7 +128,7 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Complementos</h6>
                         <?php
-                            if(isset($_SESSION["id"])) {
+                            if(isset($_SESSION["id_estaleiro"])) {
                                 if(empty($_SESSION["complementos"])) {
                                     echo "<p class='data-value'>N/A</p>";
                                 } else {
@@ -137,7 +141,7 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Bairro</h6>
                         <?php
-                            if(isset($_SESSION["id"])) {
+                            if(isset($_SESSION["id_estaleiro"])) {
                                 echo "<p class='data-value'>" . htmlspecialchars($_SESSION['bairro']) . "</p>";
                             } 
                         ?>  
@@ -146,7 +150,7 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Cidade</h6>
                         <?php
-                            if(isset($_SESSION["id"])) {
+                            if(isset($_SESSION["id_estaleiro"])) {
                                 echo "<p class='data-value'>" . htmlspecialchars($_SESSION['cidade']) . "</p>";
                             } 
                         ?>  
@@ -155,7 +159,7 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Estado</h6>
                         <?php
-                            if(isset($_SESSION["id"])) {
+                            if(isset($_SESSION["id_estaleiro"])) {
                                 echo "<p class='data-value'>" . htmlspecialchars($_SESSION['estado']) . "</p>";
                             } 
                         ?>  

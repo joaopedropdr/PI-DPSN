@@ -11,7 +11,6 @@
   <style>
     body {
       font-family: 'Noto Sans', sans-serif;
-      background-color: #f4faff;
       margin: 0;
       padding: 0;
     }
@@ -89,9 +88,8 @@
     }
 
     .form-control:focus {
-      border-color: #4aa3e0;
+      border-color: #0C3252;
       box-shadow: none;
-      background-color: #fff;
     }
 
     .btn-primary {
@@ -110,7 +108,7 @@
       position: absolute;
       top: 20px;
       left: 20px;
-      color: #4aa3e0;
+      color: #fff;
       text-decoration: none;
       font-size: 14px;
     }
@@ -164,7 +162,7 @@
 </head>
 <body class="gradiente-bg">
 
-  <a href="#" class="voltar">← Voltar</a>
+  <a href="index.php" class="voltar">← Voltar</a>
 
   <div class="logo-topo">
     <img src="imgs/LOGO_colorido-svg.svg" alt="Logo DPSN">
@@ -186,16 +184,17 @@
         <h2>Entrar como <span>Administrador</span></h2>
         <p class="subtitle">Insira suas credenciais para acessar o sistema.</p>
 
-        <form action="login.php" method="POST">
+        <form method="POST">
+          <div class="text-danger"><?php echo $msg[2];?></div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input 
               type="email" 
               class="form-control" 
               id="email" 
-              name="email" 
-              placeholder="Digite aqui o email cadastrado" 
-              required>
+              name="email_login" 
+              placeholder="Digite aqui o email cadastrado" >
+              <div class="text-danger"><?php echo $msg[0];?></div>
           </div>
 
           <div class="mb-3">
@@ -204,9 +203,9 @@
               type="password" 
               class="form-control" 
               id="senha" 
-              name="senha" 
-              placeholder="Digite aqui a sua senha de acesso" 
-              required>
+              name="senha_login" 
+              placeholder="Digite aqui a sua senha de acesso" >
+              <div class="text-danger"><?php echo $msg[1];?></div>
           </div>
 
           <div class="d-flex justify-content-between align-items-center mb-3">

@@ -9,9 +9,15 @@
 		{
 			require_once "Views/pag_principal_estaleiro.php";
 		}
-
+		
 		public function meusDados()
 		{
 			require_once "Views/pag_dados_estaleiro.php";
 		}
+
+		public function inicioAdm()
+		{
+			require_once "Views/pag_principal_adm.php";
+		}
+	}
 ?>

@@ -97,7 +97,7 @@ require_once "navbar_adm.php";
 
 <div class="painel container text-center">
     <?php
-    if (isset($_SESSION["id"])) {
+    if (isset($_SESSION["id_estaleiro"])) {
         echo "<h3 class='titulo'>" . htmlspecialchars($_SESSION['nome']) . "</h3>";
     } else {
         echo "<h3 class='titulo'>Painel do Estaleiro</h3>";
@@ -123,7 +123,7 @@ require_once "navbar_adm.php";
         </div>
     </div>
 
-    <a href="#" class="btn-estaleiro">Dados do Estaleiro</a>
+    <a href="index.php?controle=inicioController&metodo=meusDados" class="btn-estaleiro">Dados do Estaleiro</a>
 </div>
 
 <?php

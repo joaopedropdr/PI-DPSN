@@ -50,7 +50,7 @@
         <div class=" gap-3 d-sm-flex justify-content-sm-center">
             <a href="index.php?controle=estaleiroController&metodo=login" class="btn btn-primary btn-lg px-4 me-sm-3 rounded-pill border border-0">Entrar como estaleiro</a>
             
-            <a href="#" class="btn btn-primary btn-lg px-4 rounded-pill border border-0">Entrar como administrador</a>
+            <a href="index.php?controle=administradorController&metodo=login" class="btn btn-primary btn-lg px-4 rounded-pill border border-0">Entrar como administrador</a>
         </div>
     </div>
 </body>

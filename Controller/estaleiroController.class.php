@@ -117,7 +117,7 @@
                                 if(!isset($_SESSION)) {
                                     session_start();
                                 }
-                                $_SESSION["id"] = $retorno[0]->id_estaleiro;
+                                $_SESSION["id_estaleiro"] = $retorno[0]->id_estaleiro;
                                 $_SESSION["nome_empresa"] = $retorno[0]->nome_empresa;
                                 $_SESSION["nome"] = $retorno[0]->nome;
                                 $_SESSION["cnpj"] = $retorno[0]->cnpj;

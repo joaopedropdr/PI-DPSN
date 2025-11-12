@@ -34,7 +34,7 @@
     <div class="container py-5 text-center cor-texto">
         <h1 class="display-4 fw-bold mb-3">Painel do Estaleiro</h1>    
         <?php
-            if(isset($_SESSION["id"])) {
+            if(isset($_SESSION["id_estaleiro"])) {
                 echo "<p class='lead mb-5'>Bem-vindo(a) <strong>" . htmlspecialchars($_SESSION['nome']) . "</strong> ao seu painel de controle.</p>";
             } 
         ?>
