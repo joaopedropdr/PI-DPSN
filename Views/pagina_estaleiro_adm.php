@@ -20,7 +20,7 @@ require_once "navbar_adm.php";
         border-radius: 25px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
         transition: all 0.3s ease;
-        width: 250px;   /* aumentei o tamanho dos cards */
+        width: 250px;   
         height: 250px;
         display: flex;
         flex-direction: column;
@@ -106,24 +106,24 @@ require_once "navbar_adm.php";
 
     <div class="d-flex flex-wrap justify-content-center gap-4">
         <div class="card-opcao">
-            <img src="../imgs/addembarcacao.png" alt="Cadastrar Embarcações">
+            <img src="imgs/addembarcacao.png" alt="Cadastrar Embarcações">
             <span>Cadastrar<br>Embarcações</span>
         </div>
         <div class="card-opcao">
-            <img src="../imgs/assdocument.png" alt="Assinar Documentos">
+            <img src="imgs/assdocument.png" alt="Assinar Documentos">
             <span>Assinar<br>Documentos</span>
         </div>
         <div class="card-opcao">
-            <img src="../imgs/embarcacoes.png" alt="Embarcações Cadastradas">
+            <img src="imgs/embarcacoes.png" alt="Embarcações Cadastradas">
             <span>Embarcações<br>Cadastradas</span>
         </div>
         <div class="card-opcao">
-            <img src="../imgs/solicitarnovodocumento.png" alt="Solicitar novo Documento">
+            <img src="imgs/solicitarnovodocumento.png" alt="Solicitar novo Documento">
             <span>Solicitar novo<br>Documento</span>
         </div>
     </div>
 
-    <a href="index.php?controle=inicioController&metodo=meusDados" class="btn-estaleiro">Dados do Estaleiro</a>
+    <a href="index.php?controle=estaleiroController&metodo=delete" class="btn-estaleiro">Dados do Estaleiro</a>
 </div>
 
 <?php

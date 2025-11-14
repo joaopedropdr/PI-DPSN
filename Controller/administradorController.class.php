@@ -62,6 +62,7 @@
                                 if(!isset($_SESSION)) {
                                     session_start();
                                 }
+                                // Informações adm
                                 $_SESSION["id_administrador"] = $retorno[0]->id_administrador;
                                 $_SESSION["email"] = $retorno[0]->email;
                                 header("location:index.php?controle=inicioController&metodo=inicioAdm");
@@ -84,8 +85,6 @@
 			header("location:index.php");
         } // Fim do método logout
 
-        public function todosEstaleiros() {
-            require_once "Views/pagina_estaleiro_adm.php";
-        } 
+
     }
 ?>

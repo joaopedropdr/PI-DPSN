@@ -3,12 +3,15 @@
 ?>
     <style>
         .card-custom:hover {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Sombra suave para destacar o card */
+            transform: scale(1.07);
         }
 
         .card-custom {
             color: #0C3252;
+            box-shadow: 0px 4px 10px #002b4eff;
+            transition: all 0.3s ease;
         }
+
 
         .cor-texto {
             color: #0C3252;
@@ -21,10 +24,6 @@
             height: 300px;
         }
 
-        .icone-tamanho {
-            width: 100px;
-            height: 100px;
-        }
     </style>
     <div class="container py-5 text-center cor-texto">
         <h1 class="display-4 fw-bold mb-3">Painel do Administrador</h1>
@@ -64,7 +63,7 @@
                 </a>
             </div>
             <div class="col-12 col-md-6 card-tamanho">
-                <a href="" class="lu">
+                <a href="index.php?controle=inicioController&metodo=todosEstaleiro" class="lu">
                     <div class="card card-custom h-100 rounded-3">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column">
                             <i class="fa-solid fa-address-card fa-7x pb-3 cor-texto"></i>
@@ -101,5 +100,3 @@
 ?>
 </body>
 </html>
-
-

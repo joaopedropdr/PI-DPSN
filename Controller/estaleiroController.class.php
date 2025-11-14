@@ -152,7 +152,7 @@
             $_SESSION = array();
 			session_destroy();
 			header("location:index.php");
-        }
+        } // Fim do método logout
 
         public function update() {
             $msg = array("", "", "", "", "", "", "", "", "", "", "", "", "");
@@ -225,6 +225,10 @@
                 }
             }
             require_once "Views/form_update_estaleiro.php";
-        }
+        } // Fim método update
+
+        public function delete() {
+            require_once "Views/pag_dados_estaleiro_adm.php";
+        } // Fim método delete
     }
 ?>

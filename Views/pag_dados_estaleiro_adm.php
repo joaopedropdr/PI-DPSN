@@ -1,7 +1,11 @@
 <?php
-    if (!isset($_SESSION)) session_start();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
-    require_once "navbar_est.php";
+    require_once "navbar_adm.php";
+
+
     ?>
     <style>
         .shipyard-card {
@@ -14,10 +18,10 @@
         }
 
         .data-value {
-            font-weight: 600; 
+            font-weight: 600; /* Semelhante a fw-bold do Bootstrap */
             color: #333;
-            margin-bottom: 1.5rem; 
-            word-wrap: break-word; 
+            margin-bottom: 1.5rem; /* Espaçamento entre os blocos de dados */
+            word-wrap: break-word; /* Garante que textos longos se ajustem */
         }
         .btn-salvar {
             background-color: #0C3252;
@@ -30,10 +34,21 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px #004288ff;
         }
+
+        .btn-del {
+            background-color: #b92727ff;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            border-radius: 0.5rem;
+        }
+        .btn-del:hover {
+            background-color: #8d0000ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px #8d0000ff;
+        }
     </style>
 </head>
 <body>
-    <a href="index.php?controle=inicioController&metodo=inicioEstaleiro" class="text-white text-decoration-none position-absolute start-0 m-5"><strong>←</strong>Voltar</a>
     <div class="min-vh-100 d-flex justify-content-center align-items-center p-3">
         <div class="card shipyard-card bg-light">
             <div class="card-body">
@@ -162,12 +177,16 @@
                     </div>
                 </div>
                 
-                <div class="d-grid gap-2 col-6 mx-auto mt-4 pt-2">
+                <div class="d-flex flex-row gap-2 col-6 mx-auto mt-4 pt-2">
                     <a href="index.php?controle=estaleiroController&metodo=update" class="lu">
-                        <button type="button" class="btn btn-salvar btn-lg rounded-pill text-white">
-                            Alterar informações
+                        <button type="button" class="btn btn-salvar btn-md rounded-pill text-white">
+                            <i>Alterar informações</i>
                         </button>
                     </a>
+
+                    <button type="button" class="btn btn-del btn-md rounded-pill text-white">
+                        <i>Excluir Estaleiro</i>
+                    </button>
                 </div>
 
             </div>

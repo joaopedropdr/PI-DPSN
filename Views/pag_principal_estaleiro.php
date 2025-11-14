@@ -8,11 +8,13 @@
 ?>
     <style>
         .card-custom:hover {
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Sombra suave para destacar o card */
+            transform: scale(1.07);
         }
 
         .card-custom {
             color: #0C3252;
+            box-shadow: 0px 4px 10px #002b4eff;
+            transition: all 0.3s ease;
         }
 
         .cor-texto {
@@ -44,7 +46,7 @@
                 <a href="#" class="lu">
                     <div class="card card-custom h-100 rounded-3 ">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column">
-                            <i class="fa-solid fa-clipboard-list fa-7x pb-3 cor-texto"></i>
+                            <i class="fa-solid fa-clipboard-list fa-5x pb-3 cor-texto"></i>
                             <h4 class="card-title">Emitir Dados Dos Clientes</h4>
                         </div>
                     </div>
@@ -55,7 +57,7 @@
                 <a href="" class="lu">
                     <div class="card card-custom h-100 rounded-3">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column">
-                            <i class="fa-solid fa-file-pen fa-7x pb-3 cor-texto"></i>
+                            <i class="fa-solid fa-file-pen fa-5x pb-3 cor-texto"></i>
                             <h4 class="card-title">Assinar Documentos</h4>
                         </div>
                     </div>
@@ -66,7 +68,7 @@
                 <a href="" class="lu">
                     <div class="card card-custom h-100 rounded-3">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column"> 
-                            <i class="fa-solid fa-anchor fa-7x pb-3 cor-texto"></i>
+                            <i class="fa-solid fa-anchor fa-5x pb-3 cor-texto"></i>
                             <h4 class="card-title">Cadastrar Embarcações</h4>
                         </div>
                     </div>
@@ -77,7 +79,7 @@
                 <a href="index.php?controle=inicioController&metodo=meusDados" class="lu">
                     <div class="card card-custom h-100 rounded-3">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column">
-                            <i class="fa-solid fa-address-card fa-7x pb-3 cor-texto"></i>
+                            <i class="fa-solid fa-address-card fa-5x pb-3 cor-texto"></i>
                             <h4 class="card-title">Meus Dados</h4>
                         </div>
                     </div>
@@ -88,7 +90,7 @@
                 <a href="" class="lu">
                     <div class="card card-custom h-100 rounded-3">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column">
-                            <i class="fa-solid fa-file-pdf fa-7x pb-3 cor-texto"></i>
+                            <i class="fa-solid fa-file-pdf fa-5x pb-3 cor-texto"></i>
                             <h4 class="card-title">Solicitar Documento Antigo</h4>
                         </div>
                     </div>
@@ -98,7 +100,7 @@
                 <a href="" class="lu">
                     <div class="card card-custom h-100 rounded-3">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column">
-                            <i class="fa-solid fa-ship fa-7x pb-3 cor-texto"></i>
+                            <i class="fa-solid fa-ship fa-5x pb-3 cor-texto"></i>
                             <h4 class="card-title">Embarcações Cadastradas</h4>
                         </div>
                     </div>
@@ -111,5 +113,3 @@
 ?>
 </body>
 </html>
-
-

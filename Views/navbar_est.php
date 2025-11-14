@@ -54,7 +54,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="ligth">
             <div class="container-fluid">
                 <div>
-                    <a class="navbar-brand" href="#"><img src="../imgs/LOGO_colorido-svg.svg" alt="Logo da empresa"class="logo"></a>
+                    <a class="navbar-brand" href="#"><img src="imgs/LOGO_colorido-svg.svg" alt="Logo da empresa"class="logo"></a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -65,14 +65,14 @@
                             <a class="nav-link custom-underline " aria-current="page" href="index.php?controle=inicioController&metodo=inicioEstaleiro">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link custom-underline " href="#">Emitir documento</a>
+                            <a class="nav-link custom-underline " href="#">Emitir Documento</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link custom-underline " href="#">Baixar documento</a>
+                            <a class="nav-link custom-underline " href="#">Baixar Documento</a>
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link custom-underline " href="index.php?controle=inicioController&metodo=meusDados">Minhas informações</a>
+                            <a class="nav-link custom-underline " href="index.php?controle=inicioController&metodo=meusDados">Meus Dados</a>
                         </li>
                         
                         <li class="nav-item">
