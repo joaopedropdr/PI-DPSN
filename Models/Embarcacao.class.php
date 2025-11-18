@@ -1,10 +1,11 @@
 <?php
     class Embarcacao {
         public function __construct(private int $id_embarcacao = 0, private $estaleiro_id = null, private string $nome = "", 
-        private string $comprimento_total = "", private string $boca_moldada = "", private string $pontal_moldado = "", private string $calado_maximo = "",
-        private string $calado_leve = "", private string $arqueacao_bruta = "", private string $arqueacao_liquida = "", private string $tpb = "",
-        private string $contorno = "", private string $lastro = "", private string $area_navegacao_tipo_servico	 = "", private string $tipo_embarcacao = "",
-        private string $material_casco = "", private string $motorizacao_max = "", private string $motorizacao_min = "",) {}
+        private float $comprimento_total = 0, private float $boca_moldada = 0, private float $pontal_moldado = 0, private float $calado_maximo = 0,
+        private float $calado_leve = 0, private float $arqueacao_bruta = 0, private float $arqueacao_liquida = 0, private float $tpb = 0,
+        private float $contorno = 0, private float $lastro = 0, private string $area_navegacao_tipo_servico	 = "", private string $tipo_embarcacao = "",
+        private string $material_casco = "", private int $motorizacao_max = 0, private int $motorizacao_min = 0, private int $num_tripulantes = 0,
+        private int $num_passageiros = 0, private string $num_inscricao = "") {}
 
         //  GETTERS 
         public function getId_embarcacao() {
@@ -73,11 +74,20 @@
 
         public function getMotorizacao_max() {
                 return $this->motorizacao_max;
-            }
+        }
 
-            public function getMotorizacao_min() {
-                return $this->motorizacao_min;
-            }
+        public function getMotorizacao_min() {
+            return $this->motorizacao_min;
+        }
+        public function getNum_tripulantes() {
+            return $this->num_tripulantes;
+        }
+        public function getNum_passageiros() {
+            return $this->num_passageiros;
+        }
+        public function getNum_inscricao() {
+            return $this->num_inscricao;
+        }
 
         //SETTERS    
         public function setId_embarcacao($id_embarcacao) {
@@ -167,6 +177,19 @@
 
         public function setMotorizacao_min($motorizacao_min) {
             $this->motorizacao_min = $motorizacao_min;
+            return $this;
+        }
+
+        public function setNum_tripulantes($num_tripulantes) {
+            $this->num_tripulantes = $num_tripulantes;
+            return $this;
+        }
+        public function setNum_passageiros($num_passageiros) {
+            $this->num_passageiros = $num_passageiros;
+            return $this;
+        }
+        public function setNum_inscricao($num_inscricao) {
+            $this->num_inscricao = $num_inscricao;
             return $this;
         }
     }

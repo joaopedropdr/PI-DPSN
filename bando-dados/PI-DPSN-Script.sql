@@ -111,6 +111,22 @@ CREATE TABLE embarcacoes(
     -- Chave estrangeira
     FOREIGN KEY (estaleiro_id) REFERENCES estaleiros(id_estaleiro)
 );
+-- Mudanças na tabela
+ALTER TABLE embarcacoes
+	MODIFY COLUMN estaleiro_id BIGINT UNSIGNED NOT NULL;
+ALTER TABLE embarcacoes
+	MODIFY COLUMN nome VARCHAR(255) NOT NULL;
+ALTER TABLE embarcacoes
+	MODIFY COLUMN motorizacao_min INT NULL;
+ALTER TABLE embarcacoes
+	ADD COLUMN num_tripulantes INT NOT NULL AFTER motorizacao_min;
+ALTER TABLE embarcacoes
+	ADD COLUMN num_passageiros INT NOT NULL AFTER num_tripulantes;
+ALTER TABLE embarcacoes
+	ADD COLUMN num_inscricao VARCHAR(255) NOT NULL AFTER num_passageiros;
+ALTER TABLE embarcacoes
+	MODIFY COLUMN num_inscricao VARCHAR(255) NULL;
+DESCRIBE embarcacoes; 
 CREATE TABLE documentos(
 	id_documento BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
     embarcacao_id BIGINT UNSIGNED NOT NULL,
@@ -123,8 +139,19 @@ CREATE TABLE documentos(
     FOREIGN KEY (embarcacao_id) REFERENCES embarcacoes(id_embarcacao),
 	FOREIGN KEY (cliente_id) REFERENCES clientes(id_cliente)
 );
-CREATE TABLE pdf_documentos();
-CREATE TABLE pdfs_assinados();
+CREATE TABLE pdf_documentos(
+	id_pdf_documento BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,	
+    documento_id BIGINT UNSIGNED NOT NULL,
+    pdf BLOB NOT NULL,
+    assinado BOOLEAN NULL,
+    -- lOG
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+    alterado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deletado_em DATETIME NULL,
+    -- Chave estrangeira
+	FOREIGN KEY (documento_id) REFERENCES documentos(id_documento)
+);
+
 CREATE TABLE solicitacoes_pdfs_antigos();
 
 
