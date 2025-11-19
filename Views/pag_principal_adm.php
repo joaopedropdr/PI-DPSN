@@ -31,7 +31,7 @@
 
         <div class="row justify-content-center g-5">
             <div class="col-12 col-md-6 card-tamanho">
-                <a href="#" class="lu">
+                <a href="index.php?controle=estaleiroController&metodo=inserir" class="lu">
                     <div class="card card-custom h-100 rounded-3 ">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column">
                             <i class="fa-solid fa-clipboard-list fa-7x pb-3 cor-texto"></i>
@@ -63,7 +63,7 @@
                 </a>
             </div>
             <div class="col-12 col-md-6 card-tamanho">
-                <a href="index.php?controle=inicioController&metodo=todosEstaleiro" class="lu">
+                <a href="index.php?controle=administradorController&metodo=selectNome" class="lu">
                     <div class="card card-custom h-100 rounded-3">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column">
                             <i class="fa-solid fa-address-card fa-7x pb-3 cor-texto"></i>
@@ -93,6 +93,7 @@
                     </div>
                 </a>
             </div>
+        </div>
 <!-- Fechamento da tag <main> da navbar. -->
 </main>
 <?php

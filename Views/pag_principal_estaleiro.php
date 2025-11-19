@@ -76,7 +76,7 @@
             </div>
 
             <div class="col-12 col-md-6 card-tamanho">
-                <a href="index.php?controle=inicioController&metodo=meusDados" class="lu">
+                <a href="index.php?controle=estaleiroController&metodo=selectAll" class="lu">
                     <div class="card card-custom h-100 rounded-3">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column">
                             <i class="fa-solid fa-address-card fa-5x pb-3 cor-texto"></i>
@@ -106,6 +106,7 @@
                     </div>
                 </a>
             </div>
+        </div>
 <!-- Fechamento da tag <main> da navbar. -->
 </main>
 <?php

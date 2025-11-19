@@ -1,7 +1,4 @@
 <?php
-    if (!isset($_SESSION)) {
-        session_start();
-    }
     require_once "navbar_est.php";
 ?>
     <style>
@@ -46,8 +43,8 @@
                     <div class="col-12">
                         <label for="nome" class="form-label">Nome</label>
                         <?php
-                            if(isset($_SESSION["id"])) {
-                                echo "<input type='text' class='form-control' id='nome' name='nome' value='". htmlspecialchars($_SESSION["nome"]) ."'required>";
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<input type='text' class='form-control' id='nome' name='nome' value='". $estaleiro->nome ."'required>";
                             }
                         ?>                         
                        <div class="col-12 text-danger"><?php echo $msg[0];?></div>
@@ -56,9 +53,9 @@
                     <div class="col-12">
                         <label for="nomeEmpresa" class="form-label">Nome da Empresa</label>
                         <?php
-                            if(isset($_SESSION["id"])) {
-                                echo "<input type='text' class='form-control' id='nomeEmpresa' name='nome_empresa' value='". htmlspecialchars($_SESSION["nome_empresa"]) ."' required>";
-                            } 
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<input type='text' class='form-control' id='nome_empresa' name='nome_empresa' value='". $estaleiro->nome_empresa ."'required>";
+                            }
                         ?>
                         <div class="col-12 text-danger"><?php echo $msg[1];?></div>                        
                     </div>
@@ -66,9 +63,9 @@
                     <div class="col-12 col-md-4">
                         <label for="telefone" class="form-label">Telefone</label>
                         <?php
-                            if(isset($_SESSION["id"])) {
-                                echo "<input type='tel' class='form-control' id='telefone' name='telefone' placeholder='(XX) XXXXX-XXXX' value='". htmlspecialchars($_SESSION["telefone"]) ."' required>";
-                            } 
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<input type='text' class='form-control' id='telefone' name='telefone' value='". $estaleiro->telefone ."'required>";
+                            }
                         ?>
                         <div class="col-12 col-md-4 text-danger"><?php echo $msg[2];?></div> 
                     </div>
@@ -76,9 +73,9 @@
                     <div class="col-12 col-md-4">
                         <label for="cnpj" class="form-label">CNPJ</label>
                         <?php
-                            if(isset($_SESSION["id"])) {
-                                echo "<input type='text' class='form-control' id='cnpj' name='cnpj' placeholder='XX.XXX.XXX/XXXX-XX' value='". htmlspecialchars($_SESSION["cnpj"]) ."' required>";
-                            } 
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<input type='text' class='form-control' id='cnpj' name='cnpj' value='". $estaleiro->cnpj ."'required>";
+                            }
                         ?> 
                         <div class="col-12 col-md-4 text-danger"><?php echo $msg[3];?></div>
                     </div>
@@ -86,9 +83,9 @@
                     <div class="col-12 col-md-4">
                         <label for="cep" class="form-label">CEP</label>
                         <?php
-                            if(isset($_SESSION["id"])) {
-                                echo "<input type='text' class='form-control' id='cep' name='cep' placeholder='XXXXX-XXX' value='". htmlspecialchars($_SESSION["cep"]) ."' required>";
-                            } 
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<input type='text' class='form-control' id='cep' name='cep' value='". $estaleiro->cep ."'required>";
+                            }
                         ?> 
                         <div class="col-12 col-md-4 text-danger"><?php echo $msg[4];?></div>
                     </div>
@@ -96,9 +93,9 @@
                     <div class="col-12">
                         <label for="email" class="form-label">E-mail</label>
                         <?php
-                            if(isset($_SESSION["id"])) {
-                                echo "<input type='email' class='form-control' id='email' name='email' placeholder='contato@gmail.com' value='". htmlspecialchars($_SESSION["email"]) ."' required>";
-                            } 
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<input type='text' class='form-control' id='email' name='email' value='". $estaleiro->email ."'required>";
+                            }
                         ?> 
                         <div class="col-12 text-danger"><?php echo $msg[5];?></div>
                     </div>
@@ -106,9 +103,9 @@
                     <div class="col-12 col-md-8">
                         <label for="logradouro" class="form-label">Logradouro (Rua/Avenida)</label>
                         <?php
-                            if(isset($_SESSION["id"])) {
-                                echo "<input type='text' class='form-control' id='logradouro' name='logradouro' placeholder='Rua tal tal' value='". htmlspecialchars($_SESSION["logradouro"]) ."' required>";
-                            } 
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<input type='text' class='form-control' id='logradouro' name='logradouro' value='". $estaleiro->logradouro ."'required>";
+                            }
                         ?>
                         <div class="col-12 col-md-8 text-danger"><?php echo $msg[6];?></div> 
                     </div>
@@ -116,9 +113,9 @@
                     <div class="col-12 col-md-4">
                         <label for="numero" class="form-label">Número</label>
                         <?php
-                            if(isset($_SESSION["id"])) {
-                                echo "<input type='text' class='form-control' id='numero' name='numero' value='". htmlspecialchars($_SESSION["numero"]) ."' required>";
-                            } 
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<input type='text' class='form-control' id='numero' name='numero' value='". $estaleiro->numero ."'required>";
+                            }
                         ?> 
                         <div class="col-12 col-md-4 text-danger "><?php echo $msg[7];?></div>
                     </div>
@@ -126,18 +123,18 @@
                     <div class="col-12">
                         <label for="complementos" class="form-label">Complementos (Opcional)</label>
                         <?php
-                            if(isset($_SESSION["id"])) {
-                                echo "<input type='text' class='form-control' id='complementos' name='complementos' placeholder='Escritório 3B' value='". htmlspecialchars($_SESSION["complementos"]) ."' required>";
-                            } 
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<input type='text' class='form-control' id='complementos' name='complementos' value='". $estaleiro->complementos ."'required>";
+                            }
                         ?> 
                     </div>
 
                     <div class="col-12 col-md-4">
                         <label for="bairro" class="form-label">Bairro</label>
                         <?php
-                            if(isset($_SESSION["id"])) {
-                                echo "<input type='text' class='form-control' id='bairro' name='bairro' placeholder='Sé' value='". htmlspecialchars($_SESSION["bairro"]) ."' required>";
-                            } 
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<input type='text' class='form-control' id='bairro' name='bairro' value='". $estaleiro->bairro ."'required>";
+                            }
                         ?> 
                         <div class="col-12 col-md-4 text-danger"><?php echo $msg[8];?></div>
                     </div>
@@ -145,9 +142,9 @@
                     <div class="col-12 col-md-4">
                         <label for="cidade" class="form-label">Cidade</label>
                         <?php
-                            if(isset($_SESSION["id"])) {
-                                echo "<input type='text' class='form-control' id='cidade' name='cidade' placeholder='São Paulo' value='". htmlspecialchars($_SESSION["cidade"]) ."' required>";
-                            } 
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<input type='text' class='form-control' id='cidade' name='cidade' value='". $estaleiro->cidade ."'required>";
+                            }
                         ?>
                         <div class="col-12 col-md-4 text-danger"><?php echo $msg[9];?></div> 
                     </div>
@@ -156,9 +153,9 @@
                         <label for="estado" class="form-label">Estado</label>
                         <select id="estado" name="estado" class="form-select" required>
                         <?php
-                            if(isset($_SESSION["id"])) {
-                                echo "<option value=''>". htmlspecialchars($_SESSION["estado"]) ."</option";
-                            } 
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<option value=''>". $retornoDados->estado ."</option";
+                            }
                         ?> 
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>

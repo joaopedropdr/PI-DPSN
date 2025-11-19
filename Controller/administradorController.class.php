@@ -2,6 +2,7 @@
     require_once "Models/Conexao.class.php";
     require_once "Models/Administrador.class.php";
     require_once "Models/AdministradorDAO.class.php";
+    require_once "Models/EstaleiroDAO.class.php";
     class administradorController {
         public function inserir() {
             $msg = array("", "");
@@ -56,6 +57,7 @@
                     $AdministradorDAO = new AdministradorDAO();
                     $retorno = $AdministradorDAO->login($Administrador);
                     if(is_array($retorno)) {
+
                         if(count($retorno) > 0) {
                             // Verifica se a senha corresponde
                             if(password_verify($_POST["senha_login"], $retorno[0]->senha)) {
@@ -85,6 +87,17 @@
 			header("location:index.php");
         } // Fim do método logout
 
+        public function selectNome() {
+            $estaleiroDAO = new EstaleiroDAO();
+            $retorno = $estaleiroDAO->selectNome();
+            require_once "Views/todos_estaleiros_adm.php";
+        } // FIm método selectNome
 
+        public function selectAll() {
+            $Estaleiro = new Estaleiro(id_estaleiro:1);
+            $estaleiroDAO = new EstaleiroDAO();
+            $retorno = $estaleiroDAO->selectAll($Estaleiro);
+            require_once "Views/pag_dados_estaleiro_adm.php";
+        } // FIm método selectAll
     }
 ?>

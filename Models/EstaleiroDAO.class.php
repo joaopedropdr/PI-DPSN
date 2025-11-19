@@ -109,5 +109,33 @@
             }                        
         }
 
+        public function selectNome() {
+            $sql = "SELECT nome FROM estaleiros";
+            try{
+                $stm=$this->db->prepare($sql);
+                $stm->execute();
+                $this->db = null;
+                $estaleiros = $stm->fetchAll(PDO::FETCH_OBJ);
+                return $estaleiros;
+            } catch(PDOException $e) {
+                $this->db = null;
+                return "Problema ao procurar os estaleiros";
+            }               
+        }
+
+        public function selectAll(Estaleiro $Estaleiro) {
+            $sql = "SELECT * FROM estaleiros WHERE id_estaleiro = ?";
+            try{
+                $stm=$this->db->prepare($sql);
+                $stm->bindValue(1, $Estaleiro->getId_estaleiro());
+                $stm->execute();
+                $this->db = null;
+                $estaleiros = $stm->fetchAll(PDO::FETCH_OBJ);
+                return $estaleiros;
+            } catch(PDOException $e) {
+                $this->db = null;
+                return "Problema ao procurar os estaleiros";
+            }               
+        }
     } 
 ?>

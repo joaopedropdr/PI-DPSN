@@ -1,11 +1,5 @@
 <?php
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-
     require_once "navbar_adm.php";
-
-
     ?>
     <style>
         .shipyard-card {
@@ -67,112 +61,112 @@
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Nome</h6>
                         <?php
-                            if(isset($_SESSION["id_estaleiro"])) {
-                                echo "<p class='data-value'>" . htmlspecialchars($_SESSION['nome']) . "</p>";
-                            } 
+                            foreach($retorno as $estaleiro) {
+                                echo "<p class='data-value'>" . $estaleiro->nome . "</p>";
+                            }
                         ?>
                     </div> 
 
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Nome da empresa</h6>
                         <?php
-                            if(isset($_SESSION["id_estaleiro"])) {
-                                echo "<p class='data-value'>" . htmlspecialchars($_SESSION['nome_empresa']) . "</p>";
-                            } 
+                            foreach($retorno as $estaleiro) {
+                                echo "<p class='data-value'>" . $estaleiro->nome_empresa . "</p>";
+                            }
                         ?>                        
                     </div>  
 
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">CNPJ</h6>
                         <?php
-                            if(isset($_SESSION["id_estaleiro"])) {
-                                echo "<p class='data-value'>" . htmlspecialchars($_SESSION['cnpj']) . "</p>";
-                            } 
+                            foreach($retorno as $estaleiro) {
+                                echo "<p class='data-value'>" . $estaleiro->cnpj . "</p>";
+                            }
                         ?>  
                     </div>  
 
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Telefone</h6>
                         <?php
-                            if(isset($_SESSION["id_estaleiro"])) {
-                                echo "<p class='data-value'>" . htmlspecialchars($_SESSION['telefone']) . "</p>";
-                            } 
+                            foreach($retorno as $estaleiro) {
+                                echo "<p class='data-value'>" . $estaleiro->telefone . "</p>";
+                            }
                         ?>  
                     </div>
 
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">E-mail</h6>
                         <?php
-                            if(isset($_SESSION["id_estaleiro"])) {
-                                echo "<p class='data-value'>" . htmlspecialchars($_SESSION['email']) . "</p>";
-                            } 
+                            foreach($retorno as $estaleiro) {
+                                echo "<p class='data-value'>" . $estaleiro->email . "</p>";
+                            }
                         ?>  
                     </div>
 
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">CEP</h6>
                         <?php
-                            if(isset($_SESSION["id_estaleiro"])) {
-                                echo "<p class='data-value'>" . htmlspecialchars($_SESSION['cep']) . "</p>";
-                            } 
+                            foreach($retorno as $estaleiro) {
+                                echo "<p class='data-value'>" . $estaleiro->cep . "</p>";
+                            }
                         ?>  
                     </div>
 
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Logradouro</h6>
                         <?php
-                            if(isset($_SESSION["id_estaleiro"])) {
-                                echo "<p class='data-value'>" . htmlspecialchars($_SESSION['logradouro']) . "</p>";
-                            } 
+                            foreach($retorno as $estaleiro) {
+                                echo "<p class='data-value'>" . $estaleiro->logradouro . "</p>";
+                            }
                         ?>  
                     </div>
 
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Numero</h6>
                         <?php
-                            if(isset($_SESSION["id_estaleiro"])) {
-                                echo "<p class='data-value'>" . htmlspecialchars($_SESSION['numero']) . "</p>";
-                            } 
+                            foreach($retorno as $estaleiro) {
+                                echo "<p class='data-value'>" . $estaleiro->numero . "</p>";
+                            }
                         ?>  
                     </div>
 
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Complementos</h6>
                         <?php
-                            if(isset($_SESSION["id_estaleiro"])) {
-                                if(empty($_SESSION["complementos"])) {
+                            foreach($retorno as $estaleiro) {
+                                if(empty($estaleiro->complementos)) {
                                     echo "<p class='data-value'>N/A</p>";
                                 } else {
-                                    echo "<p class='data-value'>" . htmlspecialchars($_SESSION["complementos"]) . "</p>";
+                                    echo "<p class='data-value'>" . $estaleiro->complementos . "</p>";
                                 }
-                            } 
+                            }  
                         ?>  
                     </div>
 
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Bairro</h6>
                         <?php
-                            if(isset($_SESSION["id_estaleiro"])) {
-                                echo "<p class='data-value'>" . htmlspecialchars($_SESSION['bairro']) . "</p>";
-                            } 
+                            foreach($retorno as $estaleiro) {
+                                echo "<p class='data-value'>" . $estaleiro->bairro . "</p>";
+                            }
                         ?>  
                     </div>
 
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Cidade</h6>
                         <?php
-                            if(isset($_SESSION["id_estaleiro"])) {
-                                echo "<p class='data-value'>" . htmlspecialchars($_SESSION['cidade']) . "</p>";
-                            } 
+                            foreach($retorno as $estaleiro) {
+                                echo "<p class='data-value'>" . $estaleiro->cidade . "</p>";
+                            }
                         ?>  
                     </div>
 
                     <div class="col-12 col-md-4">
                         <h6 class="text-muted mb-0">Estado</h6>
                         <?php
-                            if(isset($_SESSION["id_estaleiro"])) {
-                                echo "<p class='data-value'>" . htmlspecialchars($_SESSION['estado']) . "</p>";
-                            } 
+                            foreach($retorno as $estaleiro) {
+                                echo "<p class='data-value'>" . $estaleiro->estado . "</p>";
+                            }
                         ?>  
                     </div>
                 </div>

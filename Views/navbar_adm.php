@@ -59,7 +59,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="ligth">
             <div class="container-fluid">
                 <div>
-                    <a class="navbar-brand" href="#"><img src="imgs/LOGO_colorido-svg.svg" alt="Logo da empresa"class="logo"></a>
+                    <a class="navbar-brand" href="index.php?controle=inicioController&metodo=inicioAdm"><img src="imgs/LOGO_colorido-svg.svg" alt="Logo da empresa"class="logo"></a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -70,14 +70,14 @@
                             <a class="nav-link custom-underline" aria-current="page" href="index.php?controle=inicioController&metodo=inicioAdm">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link custom-underline" href="index.php?controle=inicioController&metodo=inserir">Emitir documento</a>
+                            <a class="nav-link custom-underline" href="">Emitir documento</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link custom-underline" href="#">Baixar documento</a>
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link custom-underline" href="#">Estaleiros</a>
+                            <a class="nav-link custom-underline" href="index.php?controle=administradorController&metodo=selectNome">Estaleiros</a>
                         </li>
                         
                         <li class="nav-item">

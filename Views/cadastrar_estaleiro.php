@@ -11,8 +11,16 @@ require_once "navbar_adm.php";
         background-color: #D9EEFF;   
     }
 
-    .cor-fundo-btn{
-        background-color: #0C3252;   
+    .btn-salvar {
+        background-color: #0C3252;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        border-radius: 0.5rem;
+    }
+    .btn-salvar:hover {
+        background-color: #004288ff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px #004288ff;
     }
 </style>
 
@@ -97,13 +105,36 @@ require_once "navbar_adm.php";
                     <div class="col-12 text-danger"><?php echo $msg[10];?></div>
                 </div>
                 <div class="col-12 col-md-4 mb-3">
-                    <label for="estado_estaleiro" class="form-label text-uppercase fs-6">Estado</label>
-                    <input type="text" class="form-control cor-fundo-input" id="estado_estaleiro" name="estado" placeholder="Estado do Estaleiro">
+                        <label for="estado" class="form-label">Estado</label>
+                        <select id="estado" name="estado" class="form-select cor-fundo-input" required>
+                            <option value=''>Estados</option>
+                            <option value="AC">AC</option>
+                            <option value="AL">AL</option>
+                            <option value="AP">AP </option>
+                            <option value="AM">AM</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="DF">DF</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="MA">MA</option>
+                            <option value="MT">MT</option>
+                            <option value="MS">MS </option>
+                            <option value="MG">MG</option>
+                            <option value="PA">PA</option>
+                            <option value="PB">PB</option>
+                            <option value="PR">PR </option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="RJ">RJ</option>
+                            <option value="RN">RN </option>
+                            <option value="RN">SP</option>
+                        </select>
                     <div class="col-12 text-danger"><?php echo $msg[11];?></div>
                 </div>  
             </div>
 
-            <button type="submit" class="btn btn-primary col-12 text-uppercase cor-fundo-btn border-0 rounded-0">Finalizar Cadastro</button>
+            <button type="submit" class="btn btn-primary col-12 text-uppercase btn-salvar">Finalizar Cadastro</button>
         </div>
     </form>
 </div>

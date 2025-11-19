@@ -28,7 +28,7 @@ require_once "navbar_adm.php";
 <div class="container py-5 text-center cor-texto">
     <h1 class="display-4 fw-bold mb-5">Cadastrar Embarcação</h1>
 
-    <form class="p-4 bg-light rounded-3" method="POST" >
+    <form class="p-4 bg-light rounded-3" method="POST">
         <h2 class="text-start text-uppercase fs-4">Dados da Embarcação</h2>
 
         <div class="col justify-content-center g-5 text-start ">

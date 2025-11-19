@@ -118,22 +118,7 @@
                                     session_start();
                                 }
                                 $_SESSION["id_estaleiro"] = $retorno[0]->id_estaleiro;
-                                $_SESSION["nome_empresa"] = $retorno[0]->nome_empresa;
                                 $_SESSION["nome"] = $retorno[0]->nome;
-                                $_SESSION["cnpj"] = $retorno[0]->cnpj;
-                                $_SESSION["telefone"] = $retorno[0]->telefone;
-                                $_SESSION["cep"] = $retorno[0]->cep;
-                                $_SESSION["logradouro"] = $retorno[0]->logradouro;
-                                $_SESSION["numero"] = $retorno[0]->numero;
-                                $_SESSION["complementos"] = $retorno[0]->complementos;
-                                $_SESSION["bairro"] = $retorno[0]->bairro;
-                                $_SESSION["cidade"] = $retorno[0]->cidade;
-                                $_SESSION["estado"] = $retorno[0]->estado;
-                                $_SESSION["email"] = $retorno[0]->email;
-                                $_SESSION["bairro"] = $retorno[0]->bairro;
-                                $_SESSION["cidade"] = $retorno[0]->cidade;
-                                $_SESSION["estado"] = $retorno[0]->estado;
-
                                 header("location:index.php?controle=inicioController&metodo=inicioEstaleiro");
                             } else {
                                 $msg[2] = "Dados incorreto, verifique os dados digitados";
@@ -155,6 +140,11 @@
         } // Fim do método logout
 
         public function update() {
+            // Chamando o selectAll para exibir nos dados na tela
+            if(!isset($_SESSION)) session_start();
+            $Estaleiro = new Estaleiro(id_estaleiro:$_SESSION["id_estaleiro"]);
+            $estaleiroDAO = new EstaleiroDAO();
+            $retornoDados = $estaleiroDAO->selectALL($Estaleiro);
             $msg = array("", "", "", "", "", "", "", "", "", "", "", "", "");
             $erro = false;
             if($_POST) {
@@ -209,8 +199,8 @@
                     $erro = true;
                 }
 
-                if(empty($_POST["estado"])) {
-                    $msg[10] = "Digite o estado";
+                if(empty($_POST["estado"]) && $_POST["estado"] == "Estado") {
+                    $msg[10] = "Selecione o estado";
                     $erro = true;
                 }
                 if(!$erro) {
@@ -219,16 +209,29 @@
                     $_POST["numero"], $_POST["complementos"], $_POST["bairro"], $_POST["cidade"], $_POST["estado"], $_POST["email"]);
                     $EstaleiroDAO = new EstaleiroDAO();
                     $retorno = $EstaleiroDAO->update($Estaleiro); 
-                    header("location:index.php?controle=inicioController&metodo=meusDados");
-
-                
+                    header("location:index.php?controle=estaleiroController&metodo=selectAll");                   
                 }
             }
             require_once "Views/form_update_estaleiro.php";
         } // Fim método update
 
         public function delete() {
+            $Estaleiro = new Estaleiro(id_estaleiro:1);
+            $estaleiroDAO = new EstaleiroDAO();
+            $retorno = $estaleiroDAO->selectALL($Estaleiro);
             require_once "Views/pag_dados_estaleiro_adm.php";
         } // Fim método delete
+
+        public function selectAll() {
+            if(!isset($_SESSION)) session_start();
+            $Estaleiro = new Estaleiro(id_estaleiro:$_SESSION["id_estaleiro"]);
+            $estaleiroDAO = new EstaleiroDAO();
+            $retorno = $estaleiroDAO->selectALL($Estaleiro);
+            require_once "Views/pag_dados_estaleiro.php";
+        } // FIm método selectAll
+
+        public function todosEstaleiros() {
+            require_once "Views/pagina_estaleiro_adm.php";
+        } // Fim metodo todosEstalieros
     }
 ?>
