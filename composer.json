@@ -1,0 +1,17 @@
+{
+    "name": "windows11/pi-dpsn",
+    "autoload": {
+        "psr-4": {
+            "Windows11\\PiDpsn\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Luis Abdo",
+            "email": "luis.abdo2006@gmail.com"
+        }
+    ],
+    "require": {
+        "mpdf/mpdf": "^8.2"
+    }
+}

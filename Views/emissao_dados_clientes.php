@@ -1,121 +1,109 @@
+<?php
+    require_once "navbar_adm.php";
+?>
+<?php
+// Views/emissao_dados_clientes.php
+require_once __DIR__ . '/../config/Database.php';
+$pdo = Database::connect();
+
+// Buscar listas para selects (estaleiros, embarcacoes, clientes)
+$estStmt = $pdo->query('SELECT * FROM estaleiros ORDER BY nome_empresa ASC');
+$estaleiros = $estStmt->fetchAll();
+
+$embStmt = $pdo->query('SELECT e.* FROM embarcacoes e ORDER BY e.nome ASC');
+$embarcacoes = $embStmt->fetchAll();
+
+$cliStmt = $pdo->query('SELECT * FROM clientes ORDER BY nome ASC');
+$clientes = $cliStmt->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emissão de Documentos do Cliente</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #89B9E4;
-            font-family: 'Noto Sans TC', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        h1,
-        h2 {
-            color: #00293C;
-        }
-
-        h2 {
-            color: #555;
-            font-weight: 400;
-        }
-
-        .form-card {
-            background-color: #fff;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            padding: 40px 30px;
-            max-width: 800px;
-            width: 100%;
-        }
-
-        .form-control-custom {
-            border-radius: 15px;
-            border: 1px solid #ccc;
-            padding: 12px 15px;
-            transition: all 0.3s;
-        }
-
-        .form-control-custom:focus {
-            border-color: #004F73;
-            box-shadow: 0 0 0 0.2rem rgba(0, 79, 115, 0.25);
-        }
-
-        .btn-custom {
-            background-color: #0C3252;
-            color: white;
-            font-weight: bold;
-            border-radius: 12px;
-            padding: 12px 30px;
-            transition: all 0.3s;
-        }
-
-        .btn-custom:hover {
-            background-color: #8bd1f1;
-            transform: scale(1.05);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emissão de Documentos do Cliente</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Fonte Noto Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { background-color:#89B9E4; font-family: 'Noto Sans', sans-serif; padding:20px; }
+    .form-card { background:#fff; padding:30px; border-radius:12px; max-width:800px; margin:0 auto; }
+    .btn-custom { background:#0C3252; color:white; border-radius:10px; padding:10px 20px; }
+  </style>
 </head>
-
 <body>
-    <div class="text-center mb-5">
-        <h1 class="fw-bold mb-3">Emitir documento do cliente</h1>
-        <h2 class="fs-5">Preencha os dados abaixo para gerar automaticamente sua Nota Fiscal em PDF</h2>
-    </div>
-    <div class="form-card">
-        <h3 class="text-center text-primary fw-bold mb-4">DADOS DO CLIENTE</h3>
-        <form class="row g-3">
-            <div class="col-md-6">
-                <input type="text" class="form-control form-control-custom" placeholder="Nome do cliente">
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control form-control-custom" placeholder="CPF/CNPJ">
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control form-control-custom" placeholder="Chassi">
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control form-control-custom" placeholder="Ano">
-            </div>
-            <div class="col-12">
-                <input type="text" class="form-control form-control-custom" placeholder="Logradouro">
-            </div>
-            <div class="col-md-4">
-                <input type="text" class="form-control form-control-custom" placeholder="Número">
-            </div>
-            <div class="col-md-4">
-                <input type="text" class="form-control form-control-custom" placeholder="Complementos">
-            </div>
-            <div class="col-md-4">
-                <input type="text" class="form-control form-control-custom" placeholder="Bairro">
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control form-control-custom" placeholder="Cidade">
-            </div>
-            <div class="col-md-3">
-                <input type="text" class="form-control form-control-custom" placeholder="Estado">
-            </div>
-            <div class="col-md-3">
-                <input type="text" class="form-control form-control-custom" placeholder="CEP">
-            </div>
-            <div class="col-12">
-                <input type="date" class="form-control form-control-custom">
-            </div>
-            <div class="col-12 text-center">
-                <button type="submit" class="btn btn-custom w-100 py-3 mt-3">
-                    FINALIZAR
-                </button>
-            </div>
-        </form>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="form-card">
+    <h3 class="text-center">Emitir documento do cliente</h3>
+    <form method="post" action="../Controller/gerarDocumentoController.php" class="row g-3">
+      <!-- Selecionar Estaleiro -->
+      <div class="col-12"><h5>Selecionar Estaleiro / Embarcação</h5></div>
+      <div class="col-md-6">
+        <select id="select-estaleiro" name="id_estaleiro" class="form-select">
+          <option value="">-- Escolher estaleiro --</option>
+          <?php foreach ($estaleiros as $est) : ?>
+            <option value="<?= htmlspecialchars($est['id_estaleiro']) ?>"><?= htmlspecialchars($est['nome_empresa']) ?> (<?= htmlspecialchars($est['cnpj']) ?>)</option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <select id="select-embarcacao" name="id_embarcacao" class="form-select">
+          <option value="">-- Escolher embarcação --</option>
+          <?php foreach ($embarcacoes as $emb) : ?>
+            <option data-estaleiro="<?= htmlspecialchars($emb['estaleiro_id'] ?? '') ?>" value="<?= htmlspecialchars($emb['id_embarcacao'] ?? $emb['id']) ?>"><?= htmlspecialchars($emb['nome'] ?? 'Embarcação') ?> - <?= htmlspecialchars($emb['tipo_embarcacao'] ?? '') ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+      <div class="col-12"><h5>Selecionar Cliente</h5></div>
+      <div class="col-md-12">
+        <select id="select-cliente" name="id_cliente" class="form-select">
+          <option value="">-- Escolher cliente --</option>
+          <?php foreach ($clientes as $cli) : ?>
+            <option value="<?= htmlspecialchars($cli['id_cliente']) ?>"><?= htmlspecialchars($cli['nome']) ?> (<?= htmlspecialchars($cli['cpf_cnpj']) ?>)</option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+      <div class="col-12"><h5>Valores e descrição</h5></div>
+      <div class="col-md-4"><input type="text" name="descricao" class="form-control" placeholder="Descrição do serviço"></div>
+      <div class="col-md-2"><input type="number" step="1" name="quantidade" class="form-control" placeholder="Qtd" value="1"></div>
+      <div class="col-md-3"><input type="text" name="valor_unit" class="form-control" placeholder="Valor unit. ex: 1500.00"></div>
+      <div class="col-md-3"><input type="text" name="valor_total" class="form-control" placeholder="Valor total ex: 1500.00"></div>
+
+      <!-- Gerará sempre o Termo de Responsabilidade de Construção -->
+
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-custom w-50">FINALIZAR</button>
+      </div>
+    </form>
+  </div>
+  <script>
+    // filtrar embarcações por estaleiro selecionado
+    (function(){
+      const estSelect = document.getElementById('select-estaleiro');
+      const embSelect = document.getElementById('select-embarcacao');
+
+      if (!estSelect || !embSelect) return;
+
+      const allOptions = Array.from(embSelect.options).map(opt => ({ value: opt.value, text: opt.text, est: opt.getAttribute('data-estaleiro') }));
+
+      estSelect.addEventListener('change', function(){
+        const sel = this.value;
+        // limpar e recriar
+        embSelect.innerHTML = '<option value="">-- Escolher embarcação --</option>';
+        allOptions.forEach(o => {
+          if (!sel || String(o.est) === String(sel)) {
+            const opt = document.createElement('option');
+            opt.value = o.value;
+            opt.text = o.text;
+            embSelect.appendChild(opt);
+          }
+        });
+      });
+    })();
+  </script>
+  <?php
+require_once "footer.html";
+?>
 </body>
 </html>
