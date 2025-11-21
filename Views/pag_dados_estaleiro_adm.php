@@ -177,12 +177,32 @@
                             <i>Alterar informações</i>
                         </button>
                     </a>
-
-                    <button type="button" class="btn btn-del btn-md rounded-pill text-white">
+                    <button type="button" class="btn btn-del btn-md rounded-pill text-white " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         <i>Excluir Estaleiro</i>
                     </button>
-                </div>
 
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <p class="mt-3">Deseja excluir esse estaleiro?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-salvar text-white" data-bs-dismiss="modal">Voltar</button>
+                                    <form method="post" action="index.php?controle=estaleiroController&metodo=delete">
+                                        <?php
+                                            foreach($retorno as $estaleiro) {
+                                                echo "<input type='hidden'  name='id_estaleiro' value=" . $estaleiro->id_estaleiro ." >";
+                                            }
+                                            ?>  
+                                        <button type="submit" class="btn btn-del text-white">Excluir</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

@@ -33,15 +33,20 @@
                 if(is_array($retorno)) {
                     if(count($retorno) > 0) {
                         foreach($retorno as $estaleiro) {
-                            echo "<div class='col-12 col-sm-4 card-tamanho'>
-                                <a href='index.php?controle=estaleiroController&metodo=todosEstaleiros' class='lu'>
-                                    <div class='card card-custom h-100 rounded-3'>
-                                        <div class='card-body d-flex justify-content-center align-items-center'>
-                                            <h4 class='card-title'>$estaleiro->nome</h4>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>";                        
+                            echo "<div class='col-12 col-sm-4 '>   
+                                    <form method='get'>
+                                        <input type='hidden' name='id_estaleiro' value=' $estaleiro->id_estaleiro'>   
+                                        <button' class='card-tamanho w-100' type='submit'>                                  
+                                            <a href='index.php?controle=administradorController&metodo=infoEstaleiros&id=$estaleiro->id_estaleiro' class='lu'>
+                                                <div class='card card-custom h-100 rounded-3'>
+                                                    <div class='card-body d-flex justify-content-center align-items-center'>
+                                                        <h4 class='card-title'><strong>$estaleiro->nome</strong></h4>
+                                                    </div>
+                                                </div>                                                                                      
+                                            </a>
+                                        </button>                                                                                             
+                                    </form>   
+                                </div>";
                         }
                     }
                 }

@@ -54,6 +54,23 @@
             }
         } // Fim método verificarEmail
 
+        public function verificarCnpj(Estaleiro $Estaleiro) {
+            // Preparando a frase sql
+            $sql = "SELECT cnpj, nome, id_estaleiro FROM estaleiros WHERE cnpj = ?";
+            try {
+                $stm = $this->db->prepare($sql);
+                // Substituindo o ? pelo email que vai ser buscado
+                $stm->bindValue(1, $Estaleiro->getCnpj());
+                $stm->execute();
+                $this->db = null;
+                // Retornando o array com as informações buscadas
+                return $stm->fetchAll(PDO::FETCH_OBJ);
+            } catch(PDOException $e) {
+				$this->db = null; 
+				return "Problema ao validar o cnpj";
+            }
+        } // Fim método verificarCNpj
+
         public function login(Estaleiro $Estaleiro) {
             $sql = "SELECT * FROM estaleiros WHERE email = ?";
             try{
@@ -110,7 +127,7 @@
         }
 
         public function selectNome() {
-            $sql = "SELECT nome FROM estaleiros";
+            $sql = "SELECT id_estaleiro, nome FROM estaleiros";
             try{
                 $stm=$this->db->prepare($sql);
                 $stm->execute();
@@ -137,5 +154,19 @@
                 return "Problema ao procurar os estaleiros";
             }               
         }
+
+        public function delete(Estaleiro $Estaleiro) {
+            $sql = "DELETE FROM estaleiros WHERE id_estaleiro = ?";
+            try{
+                $stm=$this->db->prepare($sql);
+                $stm->bindValue(1, $Estaleiro->getId_estaleiro());
+                $stm->execute();
+                $this->db = null;
+                return true;
+            } catch(PDOException $e) {
+                $this->db = null;
+                return "Problema ao realizar o delete";
+            }
+        } // Fim método update
     } 
 ?>

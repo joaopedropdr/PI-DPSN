@@ -1,4 +1,6 @@
 <?php
+    require_once "Models/Estaleiro.class.php";
+    require_once "Models/EstaleiroDAO.class.php";
     class inicioController {
 		public function inicio()
 		{
@@ -10,10 +12,6 @@
 			require_once "Views/pag_principal_estaleiro.php";
 		}
 		
-		public function meusDados()
-		{
-			require_once "Views/pag_dados_estaleiro.php";
-		}
 
 		public function inicioAdm()
 		{

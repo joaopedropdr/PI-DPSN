@@ -112,6 +112,14 @@ CREATE TABLE embarcacoes(
     FOREIGN KEY (estaleiro_id) REFERENCES estaleiros(id_estaleiro)
 );
 -- Mudanças na tabela
+SHOW CREATE TABLE embarcacoes;
+ALTER TABLE embarcacoes
+ADD CONSTRAINT fk_estaleiro
+FOREIGN KEY (estaleiro_id)
+REFERENCES estaleiros (id_estaleiro)
+ON DELETE CASCADE;
+ALTER TABLE embarcacoes
+	DROP FOREIGN KEY embarcacoes_ibfk_1;
 ALTER TABLE embarcacoes
 	MODIFY COLUMN estaleiro_id BIGINT UNSIGNED NOT NULL;
 ALTER TABLE embarcacoes

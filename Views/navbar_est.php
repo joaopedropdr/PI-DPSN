@@ -76,7 +76,7 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link custom-underline " href="index.php?controle=inicioController&metodo=meusDados">Meus Dados</a>
+                            <a class="nav-link custom-underline " href="index.php?controle=estaleiroController&metodo=selectAll">Meus Dados</a>
                         </li>
                         
                         <li class="nav-item">

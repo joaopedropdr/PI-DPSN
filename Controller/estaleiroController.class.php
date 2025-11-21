@@ -43,6 +43,17 @@
                 if(empty($_POST["cnpj"])) {
                     $msg[4] = "Digite o cnpj do estaleiro";
                     $erro = true;
+                } else {
+                    // verifica se esse cnpj já está cadastrado
+                    $Estaleiro = new Estaleiro(cnpj:$_POST["cnpj"]);
+                    $EstaleiroDAO = new EstaleiroDAO();
+                    $retorno = $EstaleiroDAO->verificarCnpj($Estaleiro);
+                    if(is_array($retorno)) {
+                        if(count($retorno) > 0) {
+                            $msg[4] = "Esse cnpj já está cadastrado";
+                            $erro = true;                           
+                        }
+                    }
                 }
 
                 if(empty($_POST["telefone"])) {
@@ -216,10 +227,12 @@
         } // Fim método update
 
         public function delete() {
-            $Estaleiro = new Estaleiro(id_estaleiro:1);
-            $estaleiroDAO = new EstaleiroDAO();
-            $retorno = $estaleiroDAO->selectALL($Estaleiro);
-            require_once "Views/pag_dados_estaleiro_adm.php";
+            if(isset($_POST["id_estaleiro"])) {
+                $Estaleiro = new Estaleiro(id_estaleiro:$_POST["id_estaleiro"]);
+                $estaleiroDAO = new EstaleiroDAO();
+                $retorno = $estaleiroDAO->delete($Estaleiro);               
+                header("location:index.php?controle=administradorController&metodo=selectNome"); 
+            }         
         } // Fim método delete
 
         public function selectAll() {
@@ -230,8 +243,6 @@
             require_once "Views/pag_dados_estaleiro.php";
         } // FIm método selectAll
 
-        public function todosEstaleiros() {
-            require_once "Views/pagina_estaleiro_adm.php";
-        } // Fim metodo todosEstalieros
+
     }
 ?>

@@ -1,5 +1,5 @@
 <?php
-require_once "navbar_adm.php";
+    require_once "navbar_adm.php";
 ?>
 
 <style>
@@ -32,15 +32,6 @@ require_once "navbar_adm.php";
         <h2 class="text-start text-uppercase fs-4">Dados da Embarcação</h2>
 
         <div class="col justify-content-center g-5 text-start ">
-            <div class="col-12 mb-3">
-                <select class="form-select cor-fundo-input cor-texto" aria-label="Estaleiro" name="estaleiro">
-                    <option selected>Estaleiro</option>
-                    <option value="1">Estaleiro 1</option>
-                    <option value="2">Estaleiro 2</option>
-                    <option value="3">Estaleiro 3</option>
-                </select>
-            </div>
-
             <div class="row justify-content-between">
                 <div class="col-12 col-md-6 mb-3">
                     <label for="modelo_embarcacao" class="form-label text-uppercase fs-6">nome do Modelo</label>
@@ -162,7 +153,7 @@ require_once "navbar_adm.php";
                     <label for="num_passageiros_embarcacao" class="form-label text-uppercase fs-6">Nº de Passageiros</label>
                     <input type="number" class="form-control cor-fundo-input" id="num_passageiros_embarcacao" name="passageiros"
                     placeholder="Digite o Nº de Passageiros">
-                    <div class="col-12 col-mb-3 mx-1 text-danger"><?php echo $msg[16];?></div>
+                    <div class="col-12 col-mb-3 mx-1 text-danger"><?php echo $msg[15];?></div>
                 </div>
 
                 <div class="col-12 col-md-4 mb-3">

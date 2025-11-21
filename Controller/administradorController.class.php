@@ -3,6 +3,7 @@
     require_once "Models/Administrador.class.php";
     require_once "Models/AdministradorDAO.class.php";
     require_once "Models/EstaleiroDAO.class.php";
+    require_once "Models/Estaleiro.class.php";
     class administradorController {
         public function inserir() {
             $msg = array("", "");
@@ -99,5 +100,25 @@
             $retorno = $estaleiroDAO->selectAll($Estaleiro);
             require_once "Views/pag_dados_estaleiro_adm.php";
         } // FIm método selectAll
+
+        public function dadosEstaleiro()
+		{
+            if(isset($_GET['id']) && is_numeric($_GET['id'])) {
+                $id_estaleiro = (int) $_GET['id'];
+                $Estaleiro = new Estaleiro(id_estaleiro:$id_estaleiro);
+                $estaleiroDAO = new EstaleiroDAO();
+                $retorno = $estaleiroDAO->selectALL($Estaleiro);
+            }
+			require_once "Views/pag_dados_estaleiro_adm.php";
+		}
+        public function infoEstaleiros() {
+            if(isset($_GET['id']) && is_numeric($_GET['id'])) {
+                $id_estaleiro = (int) $_GET['id'];
+                $Estaleiro = new Estaleiro(id_estaleiro:$id_estaleiro);
+                $estaleiroDAO = new EstaleiroDAO();
+                $retorno = $estaleiroDAO->selectALL($Estaleiro);
+            }
+            require_once "Views/pagina_estaleiro_adm.php";
+        } // Fim metodo todosEstalieros
     }
 ?>

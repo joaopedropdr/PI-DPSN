@@ -10,7 +10,6 @@ require_once "navbar_adm.php";
 
     .titulo {
         color: #002b5c;
-        font-weight: 700;
         font-size: 2.3rem;
         margin-bottom: 60px;
     }
@@ -95,13 +94,12 @@ require_once "navbar_adm.php";
     }
 </style>
 
-<div class="painel container text-center">
+<div class="painel container text-center min-vh-100">
     <?php
-    if (isset($_SESSION["id_estaleiro"])) {
-        echo "<h3 class='titulo'>" . htmlspecialchars($_SESSION['nome']) . "</h3>";
-    } else {
-        echo "<h3 class='titulo'>Painel do Estaleiro</h3>";
+    foreach($retorno as $estaleiro) {
+        echo "<h3 class='titulo'> Painel do Estaleiro <br><strong>" . $estaleiro->nome . "<strong/></h3>";
     }
+
     ?>
 
     <div class="d-flex flex-wrap justify-content-center gap-4">
@@ -122,8 +120,12 @@ require_once "navbar_adm.php";
             <span>Solicitar novo<br>Documento</span>
         </div>
     </div>
+    <?php 
+        foreach($retorno as $estaleiro) {
+            echo "<a href='index.php?controle=administradorController&metodo=dadosEstaleiro&id= " . $estaleiro->id_estaleiro . "' class='btn-estaleiro'>Dados do Estaleiro</a>";
 
-    <a href="index.php?controle=estaleiroController&metodo=delete" class="btn-estaleiro">Dados do Estaleiro</a>
+        }
+    ?>
 </div>
 
 <?php
