@@ -168,5 +168,20 @@
                 return "Problema ao realizar o delete";
             }
         } // Fim método update
+
+        public function getById(Estaleiro $Estaleiro) {
+            $sql = "SELECT * FROM estaleiros WHERE id_estaleiro = ?";
+            try {
+                $stm = $this->db->prepare($sql);
+                $stm->bindValue(1, $Estaleiro->getId_estaleiro());
+                $stm->execute();
+                $this->db = null;
+                $Estaleiro = $stm->fetchAll(PDO::FETCH_OBJ);
+                return $Estaleiro;              
+            } catch(PDOException $e) {
+                $this->db = null;
+                return "Erro";
+            }
+        }// Fim método getById
     } 
 ?>

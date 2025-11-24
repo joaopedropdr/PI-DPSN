@@ -48,7 +48,7 @@
         <div class="row justify-content-center g-5 mt-5">
             <?php
                 foreach($retorno as $embarcacao) {
-                    echo "<button class='btn btn-light col-12 col-md-6 m-5' type='button' data-bs-toggle='collapse' data-bs-target='#$embarcacao->id_embarcacao' aria-expanded='false' aria-controls='$embarcacao->id_embarcacao'>
+                    echo "<button class='btn btn-light col-12 col-md-6' type='button' data-bs-toggle='collapse' data-bs-target='#$embarcacao->id_embarcacao' aria-expanded='false' aria-controls='$embarcacao->id_embarcacao'>
                         <strong>$embarcacao->nome</strong>
                     </button>
                     <div class='collapse' id='$embarcacao->id_embarcacao'>

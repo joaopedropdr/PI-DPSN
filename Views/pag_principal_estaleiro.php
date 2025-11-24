@@ -43,7 +43,7 @@
 
         <div class="row justify-content-center g-5">
             <div class="col-12 col-md-6 card-tamanho">
-                <a href="#" class="lu">
+                <a href="index.php?controle=clienteController&metodo=insert" class="lu">
                     <div class="card card-custom h-100 rounded-3 ">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column">
                             <i class="fa-solid fa-clipboard-list fa-5x pb-3 cor-texto"></i>

@@ -61,6 +61,13 @@ CREATE TABLE clientes(
     alterado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deletado_em DATETIME NULL
 );
+ALTER TABLE clientes	
+	ADD COLUMN embarcacao_id BIGINT UNSIGNED NOT NULL AFTER id_cliente;
+ALTER TABLE clientes	
+	ADD CONSTRAINT fk_cliente_embarcacao
+    FOREIGN KEY (embarcacao_id) REFERENCES embarcacoes(id_embarcacao);
+DESCRIBE clientes;
+
 CREATE TABLE administradores_clientes(
 	id_administrador_cliente BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
     administrador_id BIGINT UNSIGNED NOT NULL, 
