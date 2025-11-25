@@ -27,30 +27,32 @@
         } // Fim método inserir
 
         public function verificarEmail(Administrador $Administrador) {
-            // Preparando a frase sql
-            $sql = "SELECT email, nome, id_administrador FROM administradores WHERE email = ?";
+            // Preparando a frase sql - selecionar apenas colunas existentes
+            $sql = "SELECT email, id_administrador FROM administradores WHERE email = ?";
             try {
                 $stm = $this->db->prepare($sql);
                 // Substituindo o ? pelo email que vai ser buscado
                 $stm->bindValue(1, $Administrador->getEmail());
                 $stm->execute();
-                $this->db = null;
                 // Retornando o array com as informações buscadas
-                return $stm->fetchAll(PDO::FETCH_OBJ);
+                $results = $stm->fetchAll(PDO::FETCH_OBJ);
+                $this->db = null;
+                return $results;
             } catch(PDOException $e) {
-				$this->db = null; 
-				return "Problema ao validar o e-mail";
+                $this->db = null; 
+                return "Problema ao validar o e-mail";
             }
         } // Fim método verificarEmail
 
         public function login(Administrador $Administrador) {
-            $sql = "SELECT * FROM administradores  WHERE email = ?";
+            $sql = "SELECT * FROM administradores WHERE email = ?";
             try{
                 $stm=$this->db->prepare($sql);
                 $stm->bindValue(1, $Administrador->getEmail());
                 $stm->execute();
+                $results = $stm->fetchAll(PDO::FETCH_OBJ);
                 $this->db = null;
-                return $stm->fetchAll(PDO::FETCH_OBJ);
+                return $results;
             } catch(PDOException $e) {
                 $this->db = null;
                 return "Problema ao realizar o login";

@@ -18,7 +18,7 @@
         public function setEmail($email) {
            return $this->email = $email;
         }
-        public function seSenha($senha) {
+        public function setSenha($senha) {
             return $this->senha = $senha;
         }
          
