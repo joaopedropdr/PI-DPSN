@@ -29,7 +29,7 @@
                 return (int)$last_id;              
             } catch(PDOException $e) {
                 $this->db = null;
-                return "Erro";
+                return $e->getMessage();
             }
         } // Fim método insert
 

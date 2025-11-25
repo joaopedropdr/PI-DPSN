@@ -54,7 +54,7 @@
             </div>
 
             <div class="col-12 col-md-6 card-tamanho">
-                <a href="" class="lu">
+                <a href="index.php?controle=documentoController&metodo=escolherEmbarcacaoAssinar" class="lu">
                     <div class="card card-custom h-100 rounded-3">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column">
                             <i class="fa-solid fa-file-pen fa-7x pb-3 cor-texto"></i>

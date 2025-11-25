@@ -224,8 +224,15 @@
             if(isset($_POST["id_embarcacao"])) {
                 $Embarcacao = new Embarcacao(id_embarcacao:$_POST["id_embarcacao"]);
                 $EmbarcacaoDAO = new EmbarcacaoDAO();
-                $retorno = $EmbarcacaoDAO->delete($Embarcacao);               
-                header("location:index.php?controle=inicioController&metodo=inicioEstaleiro"); 
+                $retorno = $EmbarcacaoDAO->delete($Embarcacao);       
+                if(isset($_SESSION["id_estaleiro"])) {  
+                        header("location:index.php?controle=inicioController&metodo=inicioEstaleiro");  
+                }         
+                    if(isset($_SESSION["id_administrador"])) {
+                        header("location:index.php?controle=embarcacaoController&metodo=select&id=$est_id");    
+        
+                    }          
+                
             }         
         } // Fim método delete
     }

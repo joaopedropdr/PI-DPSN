@@ -110,6 +110,56 @@
             require_once "Views/docs_est.php";
         }
 
+        // Lista embarcações do estaleiro (apenas aquelas com documento) para selecionar e abrir o formulário preenchido
+        public function escolherEmbarcacaoAssinar() {
+            if(!isset($_SESSION)) session_start();
+            $id_estaleiro = $_SESSION['id_estaleiro'] ?? null;
+            if (!$id_estaleiro) {
+                // sem estaleiro logado
+                header('Content-Type: text/plain; charset=utf-8');
+                echo "Estaleiro não está logado.";
+                exit;
+            }
+            $embDAO = new EmbarcacaoDAO();
+            $embList = $embDAO->select(new Embarcacao(estaleiro_id:$id_estaleiro));
+            // filtrar apenas embarcações que tenham documento
+            $docDAO = new DocumentoDAO();
+            $embComDoc = [];
+            foreach ($embList as $emb) {
+                $docs = $docDAO->selectEmb(new Documento(embarcacao_id:$emb->id_embarcacao));
+                if (!empty($docs)) {
+                    $emb->documentos = $docs;
+                    $embComDoc[] = $emb;
+                }
+            }
+            $retornoEmb = $embComDoc;
+            require_once "Views/escolher_embarcacao_assinar.php";
+        }
+
+        // Abre o form_documento.php preenchido a partir de uma embarcação (pega o primeiro documento associado)
+        public function abrirFormPorEmbarcacao() {
+            $id_emb = isset($_GET['id']) ? (int) $_GET['id'] : null;
+            if (!$id_emb) {
+                header('Content-Type: text/plain; charset=utf-8');
+                echo "ID de embarcação inválido.";
+                exit;
+            }
+            $docDAO = new DocumentoDAO();
+            $docs = $docDAO->selectEmb(new Documento(embarcacao_id:$id_emb));
+            if (empty($docs)) {
+                header('Content-Type: text/plain; charset=utf-8');
+                echo "Nenhum documento vinculado a esta embarcação.";
+                exit;
+            }
+            $retornoDoc = $docs; // pode ter múltiplos, usamos o primeiro no view
+            $retornoEmb = (new EmbarcacaoDAO())->getById(new Embarcacao(id_embarcacao:$id_emb));
+            $id_est = $retornoEmb[0]->estaleiro_id ?? null;
+            $retornoEst = (new EstaleiroDAO())->getById(new Estaleiro(id_estaleiro:$id_est));
+            $id_cli = $retornoDoc[0]->cliente_id ?? null;
+            $retornoCli = (new ClienteDAO())->getById(new Cliente(id_cliente:$id_cli));
+            require_once "Views/form_documento.php";
+        }
+
         public function downloadPdfByBlob() {
             // 1. Pega o ID do PDF enviado pelo link (URL)
             $id_pdf = (int)$_GET['id'];           
@@ -287,28 +337,41 @@
                 $html .= '<p>Helcio Marcelo De Russi</p>';
                 $html .= '<p>CREA: 5060478012</p>';
 
-                // gerar PDF
+                // gerar PDF, salvar no banco e enviar para download
                 try {
                     $mpdf = new \Mpdf\Mpdf();
                     $mpdf->WriteHTML($html);
-                    $pdfArquivo =$mpdf->Output('', 'S');
+                    $pdfArquivo = $mpdf->Output('', 'S'); // retorna string binária
+
+                    // salvar no disco (opcional)
                     $filename = 'termo_' . ($id_doc ?? time()) . '.pdf';
-                    $saveDir = __DIR__ . '/../pdfs'; 
-                    if (!is_dir($saveDir)) mkdir($saveDir, 0777, true); // Cria o diretório se não existir
+                    $saveDir = __DIR__ . '/../pdfs/'; 
+                    if (!is_dir($saveDir)) mkdir($saveDir, 0777, true);
                     $savePath = $saveDir . $filename;
-                    file_put_contents($savePath, $pdfArquivo);
-                    $pdf = new PdfDocumento(0, $id_doc, $pdfArquivo, 0);
+                    @file_put_contents($savePath, $pdfArquivo);
+
+                    // salvar no banco como BLOB
+                    $pdfObj = new PdfDocumento(0, $id_doc, $pdfArquivo, 0);
                     $pdfDAO = new PdfDocumentoDAO();
-                    $retronoPdf = $pdfDAO->insert($pdf);
+                    $retronoPdf = $pdfDAO->insert($pdfObj);
+
+                    // enviar para download
+                    header('Content-Description: File Transfer');
+                    header('Content-Type: application/pdf');
+                    header('Content-Disposition: attachment; filename="' . $filename . '"');
+                    header('Content-Transfer-Encoding: binary');
+                    header('Expires: 0');
+                    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+                    header('Pragma: public');
+                    header('Content-Length: ' . strlen($pdfArquivo));
+                    // Limpar buffers
+                    if (ob_get_length()) ob_end_clean();
+                    echo $pdfArquivo;
+                    exit;
                 } catch (\Exception $e) {
                     header('Content-Type: text/plain; charset=utf-8');
                     echo "Erro ao gerar PDF: " . $e->getMessage();
-                }
-                if(!isset($_SESSION)) session_start();
-                if(isset($_SESSION["id_estaleiro"])) {
-                    header("location:index.php?controle=inicioController&metodo=inicioEstaleiro");
-                } else {
-                    header("location:index.php?controle=inicioController&metodo=inicioAdm");
+                    exit;
                 }
             }
         }

@@ -2,16 +2,16 @@ CREATE DATABASE IF NOT EXISTS pi_dpsn CHARACTER SET utf8mb4 COLLATE utf8mb4_unic
 USE pi_dpsn;
 
 -- Dropando todas as tabelas do banco
+DROP TABLE IF EXISTS administradores_clientes;
+DROP TABLE IF EXISTS clientes_estaleiros;
+DROP TABLE IF EXISTS pdf_documentos;
+DROP TABLE IF EXISTS pdfs_assinados;
+DROP TABLE IF EXISTS documentos;
+DROP TABLE IF EXISTS embarcacoes;
+DROP TABLE IF EXISTS solicitacoes_pdfs_antigos;
 DROP TABLE IF EXISTS administradores;
 DROP TABLE IF EXISTS estaleiros;
 DROP TABLE IF EXISTS clientes;
-DROP TABLE IF EXISTS administradores_clientes;
-DROP TABLE IF EXISTS clientes_estaleiros;
-DROP TABLE IF EXISTS embarcacoes;
-DROP TABLE IF EXISTS documentos;
-DROP TABLE IF EXISTS pdf_documentos;
-DROP TABLE IF EXISTS pdfs_assinados;
-DROP TABLE IF EXISTS solicitacoes_pdfs_antigos;
 
 -- Criando as tabelas do banco
 CREATE TABLE administradores(
