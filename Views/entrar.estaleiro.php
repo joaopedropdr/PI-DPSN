@@ -36,7 +36,7 @@
     <a href="index.php" class="text-white text-decoration-none position-absolute start-0 ms-4">← Voltar</a>
     <div class="position-absolute end-0 me-4 d-flex align-items-center">
       <img src="imgs/LOGO_colorido-svg.svg" alt="Logo" width="24" class="me-2">
-      <span class="fw-semibold text-secondary">DPSN</span>
+      <span class="fw-semibold text-white">DPSN</span>
     </div>
   </div>
 
@@ -48,9 +48,6 @@
       <div class="col-lg-5 bg-light d-flex flex-column justify-content-center align-items-center text-center p-4">
         <img src="imgs/LOGO_colorido-svg.svg" alt="Logo DPSN" width="100" class="mb-3">
         <h4 class="fw-bold text-secondary mb-2">DPSN</h4>
-        <p class="small text-secondary mb-0">
-          Solução que a DPSN faz pelas<br>empresas de embarcações.
-        </p>
       </div>
 
       <!-- Lado direito -->
@@ -98,9 +95,7 @@
   </div>
 
   <!-- Rodapé -->
-  <footer class="text-center text-muted small py-3">
-    © 2025 DPSN | Todos os direitos reservados
-  </footer>
+  <footer class="text-center text-white small py-3"> © 2025 DPSN | Todos os direitos reservados</footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
