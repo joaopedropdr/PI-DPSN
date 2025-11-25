@@ -1,5 +1,11 @@
 <?php
-    require_once "navbar_adm.php";
+    if(!isset($_SESSION)) session_start();
+    if(isset($_SESSION["id_estaleiro"])) {  
+        require_once "navbar_est.php";        
+    }         
+    if(isset($_SESSION["id_administrador"])) {
+        require_once "navbar_adm.php";                
+    }  
 ?>
 
 <style>
@@ -33,15 +39,15 @@
 
         <div class="col justify-content-center g-5 text-start ">
             <div class="col-12 mb-3">
-                <?php
-                foreach($retornoEmb as $embarcacao) {
-                    echo "<label for='embarcacao'></label>
-                    <select class='form-select cor-fundo-input cor-texto' aria-label='Estaleiro' id='embarcacao' name='embarcacao'>
-                        <option selected>Embarcações</option>
-                        <option value='$embarcacao->id_embarcacao'>$embarcacao->nome</option>
-                    </select>";
-                }
-                ?>
+                <select class='form-select cor-fundo-input cor-texto' aria-label='Estaleiro' id='embarcacao' name='embarcacao'>
+                    <option selected>Embarcações</option>
+                    <?php
+                        foreach($retornoEmb as $embarcacao) {
+                            echo "<option value='$embarcacao->id_embarcacao'>$embarcacao->nome</option>";
+                        }
+                    ?>
+                </select>
+
                 <div class="col-12 mb-3 mx-1 text-danger"><?php echo $msg[0];?></div>
             </div>
 

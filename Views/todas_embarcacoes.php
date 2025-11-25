@@ -1,5 +1,12 @@
 <?php
-    require_once "navbar_est.php";
+    if(!isset($_SESSION)) session_start();
+    if(isset($_SESSION["id_estaleiro"])) {  
+        require_once "navbar_est.php";        
+    }         
+    if(isset($_SESSION["id_administrador"])) {
+        require_once "navbar_adm.php";                
+    }    
+    
 ?>
     <style>
         .card-custom:hover {
@@ -41,14 +48,14 @@
         }
 
     </style>
-    <div class="container py-5 text-center cor-texto">
+    <div class="container py-5 text-center cor-texto min-vh-100">
         <h1 class="display-4 fw-bold mb-3">Embarcações Cadastradas</h1>
         <p class="lead mb-5">Todos as embarcações que estão cadastradas.</p>
 
-        <div class="row justify-content-center g-5 mt-5">
+        <div class="row justify-content-center g-5 mt-5 ">
             <?php
                 foreach($retorno as $embarcacao) {
-                    echo "<button class='btn btn-light col-12 col-md-6' type='button' data-bs-toggle='collapse' data-bs-target='#$embarcacao->id_embarcacao' aria-expanded='false' aria-controls='$embarcacao->id_embarcacao'>
+                    echo "<button class='btn btn-light col-12 h-25' type='button' data-bs-toggle='collapse' data-bs-target='#$embarcacao->id_embarcacao' aria-expanded='false' aria-controls='$embarcacao->id_embarcacao'>
                         <strong>$embarcacao->nome</strong>
                     </button>
                     <div class='collapse' id='$embarcacao->id_embarcacao'>

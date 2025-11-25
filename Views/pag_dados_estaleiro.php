@@ -1,5 +1,11 @@
 <?php
-    require_once "navbar_est.php";
+    if(!isset($_SESSION)) session_start();
+    if(isset($_SESSION["id_estaleiro"])) {  
+        require_once "navbar_est.php";        
+    }         
+    if(isset($_SESSION["id_administrador"])) {
+        require_once "navbar_adm.php";                
+    }  
     ?>
     <style>
         .shipyard-card {

@@ -1,5 +1,11 @@
 <?php
-    require_once "navbar_est.php";
+    if(!isset($_SESSION)) session_start();
+    if(isset($_SESSION["id_estaleiro"])) {  
+        require_once "navbar_est.php";        
+    }         
+    if(isset($_SESSION["id_administrador"])) {
+        require_once "navbar_adm.php";                
+    }  
 ?>
     <style>
         .cor-texto {
@@ -41,10 +47,15 @@
                 
                 <form action="#" method="POST" class="row g-4">
                     <div class="col-12">
+                        <?php
+                            foreach($retornoDados as $estaleiro) {
+                                echo "<input type='hidden' id='id' name='id' value='". $estaleiro->id_estaleiro ."'>";
+                            }
+                        ?>
                         <label for="nome" class="form-label">Nome</label>
                         <?php
                             foreach($retornoDados as $estaleiro) {
-                                echo "<input type='text' class='form-control' id='nome' name='nome' value='". $estaleiro->nome ."'required>";
+                                echo "<input type='text' class='form-control' id='nome' name='nome' value='". $estaleiro->nome ."'>";
                             }
                         ?>                         
                        <div class="col-12 text-danger"><?php echo $msg[0];?></div>
@@ -54,7 +65,7 @@
                         <label for="nomeEmpresa" class="form-label">Nome da Empresa</label>
                         <?php
                             foreach($retornoDados as $estaleiro) {
-                                echo "<input type='text' class='form-control' id='nome_empresa' name='nome_empresa' value='". $estaleiro->nome_empresa ."'required>";
+                                echo "<input type='text' class='form-control' id='nome_empresa' name='nome_empresa' value='". $estaleiro->nome_empresa ."'>";
                             }
                         ?>
                         <div class="col-12 text-danger"><?php echo $msg[1];?></div>                        
@@ -64,7 +75,7 @@
                         <label for="telefone" class="form-label">Telefone</label>
                         <?php
                             foreach($retornoDados as $estaleiro) {
-                                echo "<input type='text' class='form-control' id='telefone' name='telefone' value='". $estaleiro->telefone ."'required>";
+                                echo "<input type='text' class='form-control' id='telefone' name='telefone' value='". $estaleiro->telefone ."'>";
                             }
                         ?>
                         <div class="col-12 col-md-4 text-danger"><?php echo $msg[2];?></div> 
@@ -74,7 +85,7 @@
                         <label for="cnpj" class="form-label">CNPJ</label>
                         <?php
                             foreach($retornoDados as $estaleiro) {
-                                echo "<input type='text' class='form-control' id='cnpj' name='cnpj' value='". $estaleiro->cnpj ."'required>";
+                                echo "<input type='text' class='form-control' id='cnpj' name='cnpj' value='". $estaleiro->cnpj ."'>";
                             }
                         ?> 
                         <div class="col-12 col-md-4 text-danger"><?php echo $msg[3];?></div>
@@ -84,7 +95,7 @@
                         <label for="cep" class="form-label">CEP</label>
                         <?php
                             foreach($retornoDados as $estaleiro) {
-                                echo "<input type='text' class='form-control' id='cep' name='cep' value='". $estaleiro->cep ."'required>";
+                                echo "<input type='text' class='form-control' id='cep' name='cep' value='". $estaleiro->cep ."'>";
                             }
                         ?> 
                         <div class="col-12 col-md-4 text-danger"><?php echo $msg[4];?></div>
@@ -94,7 +105,7 @@
                         <label for="email" class="form-label">E-mail</label>
                         <?php
                             foreach($retornoDados as $estaleiro) {
-                                echo "<input type='text' class='form-control' id='email' name='email' value='". $estaleiro->email ."'required>";
+                                echo "<input type='text' class='form-control' id='email' name='email' value='". $estaleiro->email ."'>";
                             }
                         ?> 
                         <div class="col-12 text-danger"><?php echo $msg[5];?></div>
@@ -104,7 +115,7 @@
                         <label for="logradouro" class="form-label">Logradouro (Rua/Avenida)</label>
                         <?php
                             foreach($retornoDados as $estaleiro) {
-                                echo "<input type='text' class='form-control' id='logradouro' name='logradouro' value='". $estaleiro->logradouro ."'required>";
+                                echo "<input type='text' class='form-control' id='logradouro' name='logradouro' value='". $estaleiro->logradouro ."'>";
                             }
                         ?>
                         <div class="col-12 col-md-8 text-danger"><?php echo $msg[6];?></div> 
@@ -114,7 +125,7 @@
                         <label for="numero" class="form-label">Número</label>
                         <?php
                             foreach($retornoDados as $estaleiro) {
-                                echo "<input type='text' class='form-control' id='numero' name='numero' value='". $estaleiro->numero ."'required>";
+                                echo "<input type='text' class='form-control' id='numero' name='numero' value='". $estaleiro->numero ."'>";
                             }
                         ?> 
                         <div class="col-12 col-md-4 text-danger "><?php echo $msg[7];?></div>
@@ -124,7 +135,7 @@
                         <label for="complementos" class="form-label">Complementos (Opcional)</label>
                         <?php
                             foreach($retornoDados as $estaleiro) {
-                                echo "<input type='text' class='form-control' id='complementos' name='complementos' value='". $estaleiro->complementos ."'required>";
+                                echo "<input type='text' class='form-control' id='complementos' name='complementos' value='". $estaleiro->complementos ."'>";
                             }
                         ?> 
                     </div>
@@ -133,7 +144,7 @@
                         <label for="bairro" class="form-label">Bairro</label>
                         <?php
                             foreach($retornoDados as $estaleiro) {
-                                echo "<input type='text' class='form-control' id='bairro' name='bairro' value='". $estaleiro->bairro ."'required>";
+                                echo "<input type='text' class='form-control' id='bairro' name='bairro' value='". $estaleiro->bairro ."'>";
                             }
                         ?> 
                         <div class="col-12 col-md-4 text-danger"><?php echo $msg[8];?></div>
@@ -143,18 +154,19 @@
                         <label for="cidade" class="form-label">Cidade</label>
                         <?php
                             foreach($retornoDados as $estaleiro) {
-                                echo "<input type='text' class='form-control' id='cidade' name='cidade' value='". $estaleiro->cidade ."'required>";
+                                echo "<input type='text' class='form-control' id='cidade' name='cidade' value='". $estaleiro->cidade ."'>";
                             }
                         ?>
+
                         <div class="col-12 col-md-4 text-danger"><?php echo $msg[9];?></div> 
                     </div>
 
                     <div class="col-12 col-md-4">
                         <label for="estado" class="form-label">Estado</label>
-                        <select id="estado" name="estado" class="form-select" required>
+                        <select id="estado" name="estado" class="form-select" >
                         <?php
                             foreach($retornoDados as $estaleiro) {
-                                echo "<option value=''>". $retornoDados->estado ."</option";
+                                echo "<option value='$retornoDados->estado'>". $retornoDados->estado ."</option";
                             }
                         ?> 
                             <option value="AC">AC</option>
@@ -177,7 +189,7 @@
                             <option value="PI">PI</option>
                             <option value="RJ">RJ</option>
                             <option value="RN">RN </option>
-                            <option value="RN">SP</option>
+                            <option value="SP">SP</option>
                         </select>
                         <div class="col-12 col-md-4 text-danger"><?php echo $msg[10];?></div>
                     </div>

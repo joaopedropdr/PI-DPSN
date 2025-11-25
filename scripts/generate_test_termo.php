@@ -7,6 +7,8 @@ use Mpdf\Mpdf;
 // dados de teste compatíveis com o template
 $estaleiro = [
     'nome_empresa' => 'Estaleiro Teste LTDA',
+    'nome' => 'ventura',
+    'cep' => '00000-000',
     'cnpj' => '00.000.000/0001-99',
     'logradouro' => 'Rua Ruan',
     'numero' => '123',
@@ -38,14 +40,15 @@ $embarcacao = [
     'ano_construcao_emb' => '2024',
     'chassi_emb' => 'CHASSI-1234',
     'num_inscricao' => 'INSCR-0001',
-    'cor' => 'Branco'
 ];
 
 $cliente = [
     'nome' => 'João Teste',
     'cpf_cnpj' => '000.000.000-00',
+    'cep' => '00000-000',
     'logradouro' => 'Av. Cliente',
     'numero' => '45',
+    'complementos' => 'NULL',
     'bairro' => 'Centro',
     'cidade' => 'Cidade Cliente',
     'estado' => 'SP'
@@ -64,3 +67,4 @@ $outPath = $tmpDir . '/termo_test_output.pdf';
 $mpdf->Output($outPath, \Mpdf\Output\Destination::FILE);
 
 echo "PDF termo gerado: $outPath\n";
+?>

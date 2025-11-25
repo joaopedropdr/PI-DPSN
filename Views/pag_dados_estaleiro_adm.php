@@ -1,5 +1,11 @@
 <?php
-    require_once "navbar_adm.php";
+    if(!isset($_SESSION)) session_start();
+    if(isset($_SESSION["id_estaleiro"])) {  
+        require_once "navbar_est.php";        
+    }         
+    if(isset($_SESSION["id_administrador"])) {
+        require_once "navbar_adm.php";                
+    }  
     ?>
     <style>
         .shipyard-card {
@@ -172,7 +178,7 @@
                 </div>
                 
                 <div class="d-flex flex-row gap-2 col-6 mx-auto mt-4 pt-2">
-                    <a href="index.php?controle=estaleiroController&metodo=update" class="lu">
+                    <a href="index.php?controle=estaleiroController&metodo=update&id=<?php echo $retorno[0]->id_estaleiro; ?>" class="lu">
                         <button type="button" class="btn btn-salvar btn-md rounded-pill text-white">
                             <i>Alterar informações</i>
                         </button>

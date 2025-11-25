@@ -47,7 +47,6 @@
                 $stm = $this->db->prepare($sql);
                 $stm->bindValue(1, $embarcacao->getEstaleiro_id());
                 $stm->execute();
-                $this->db = null;
                 $embarcacao = $stm->fetchAll(PDO::FETCH_OBJ);
                 return $embarcacao;              
             } catch(PDOException $e) {

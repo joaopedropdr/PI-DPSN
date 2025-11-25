@@ -153,7 +153,14 @@
         public function update() {
             // Chamando o selectAll para exibir nos dados na tela
             if(!isset($_SESSION)) session_start();
-            $Estaleiro = new Estaleiro(id_estaleiro:$_SESSION["id_estaleiro"]);
+            if(!isset($_SESSION["id_estaleiro"])) {
+                if(isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $id_estaleiro = (int) $_GET['id'];
+                    $Estaleiro = new Estaleiro(id_estaleiro:$id_estaleiro);
+                }
+            } else {
+                $Estaleiro = new Estaleiro(id_estaleiro:$_SESSION["id_estaleiro"]);
+            }
             $estaleiroDAO = new EstaleiroDAO();
             $retornoDados = $estaleiroDAO->selectALL($Estaleiro);
             $msg = array("", "", "", "", "", "", "", "", "", "", "", "", "");
@@ -220,7 +227,13 @@
                     $_POST["numero"], $_POST["complementos"], $_POST["bairro"], $_POST["cidade"], $_POST["estado"], $_POST["email"]);
                     $EstaleiroDAO = new EstaleiroDAO();
                     $retorno = $EstaleiroDAO->update($Estaleiro); 
-                    header("location:index.php?controle=estaleiroController&metodo=selectAll");                   
+                    if(!isset($_SESSION["id_estaleiro"])) {
+                        header("location:index.php?controle=administradorController&metodo=dadosEstaleiro&id=$id_estaleiro");                   
+
+                    } else {
+                        header("location:index.php?controle=estaleiroController&metodo=selectAll");                   
+
+                    }
                 }
             }
             require_once "Views/form_update_estaleiro.php";
@@ -237,7 +250,14 @@
 
         public function selectAll() {
             if(!isset($_SESSION)) session_start();
-            $Estaleiro = new Estaleiro(id_estaleiro:$_SESSION["id_estaleiro"]);
+            if(!isset($_SESSION["id_estaleiro"])) {
+                if(isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $id_estaleiro = (int) $_GET['id'];
+                    $Estaleiro = new Estaleiro(id_estaleiro:$id_estaleiro);
+                }
+            } else {
+                $Estaleiro = new Estaleiro(id_estaleiro:$_SESSION["id_estaleiro"]);
+            }
             $estaleiroDAO = new EstaleiroDAO();
             $retorno = $estaleiroDAO->selectALL($Estaleiro);
             require_once "Views/pag_dados_estaleiro.php";

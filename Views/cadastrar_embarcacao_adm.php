@@ -1,5 +1,11 @@
 <?php
-    require_once "navbar_adm.php";
+    if(!isset($_SESSION)) session_start();
+    if(isset($_SESSION["id_estaleiro"])) {  
+        require_once "navbar_est.php";        
+    }         
+    if(isset($_SESSION["id_administrador"])) {
+        require_once "navbar_adm.php";                
+    }  
 ?>
 
 <style>
@@ -33,12 +39,14 @@
 
         <div class="col justify-content-center g-5 text-start ">
             <div class="col-12 mb-3">
-                <select class="form-select cor-fundo-input cor-texto" aria-label="Estaleiro" name="estaleiro">
-                    <option selected>Estaleiro</option>
-                    <option value="1">Estaleiro 1</option>
-                    <option value="2">Estaleiro 2</option>
-                    <option value="3">Estaleiro 3</option>
-                </select>
+                <?php
+                    foreach($retornoEst as $estaleiro) {
+                        echo "<select class='form-select cor-fundo-input cor-texto' aria-label='Estaleiro' name='estaleiro'>
+                            <option selected>Estaleiros</option>
+                            <option value='$estaleiro->id_estaleiro'>$estaleiro->nome</option>
+                        </select>";
+                    }
+                ?>
             </div>
 
             <div class="row justify-content-between">

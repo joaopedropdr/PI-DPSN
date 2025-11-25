@@ -94,12 +94,6 @@
             require_once "Views/todos_estaleiros_adm.php";
         } // FIm método selectNome
 
-        public function selectAll() {
-            $Estaleiro = new Estaleiro(id_estaleiro:1);
-            $estaleiroDAO = new EstaleiroDAO();
-            $retorno = $estaleiroDAO->selectAll($Estaleiro);
-            require_once "Views/pag_dados_estaleiro_adm.php";
-        } // FIm método selectAll
 
         public function dadosEstaleiro()
 		{

@@ -42,6 +42,21 @@
             }
         } // Fim método insert
 
+        public function selectEmb(Documento $documento) {
+            $sql = "SELECT * FROM documentos WHERE embarcacao_id = ?";
+            try {
+                $stm = $this->db->prepare($sql);
+                $stm->bindValue(1, $documento->getEmbarcacaoId());
+                $stm->execute();
+                $this->db = null;
+                $documento = $stm->fetchAll(PDO::FETCH_OBJ);
+                return $documento;              
+            } catch(PDOException $e) {
+                $this->db = null;
+                return "Erro no select do documento";
+            }
+        } // Fim método insert
+
 
         public function criar($embarcacao_id, $cliente_id) {
             $sql = "INSERT INTO documentos (embarcacao_id, cliente_id) VALUES (:emb, :cli)";

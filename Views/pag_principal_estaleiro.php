@@ -1,8 +1,11 @@
 <?php
-    if (!isset($_SESSION)) {
-        session_start();
-    }
-    require_once "navbar_est.php";
+    if(!isset($_SESSION)) session_start();
+    if(isset($_SESSION["id_estaleiro"])) {  
+        require_once "navbar_est.php";        
+    }         
+    if(isset($_SESSION["id_administrador"])) {
+        require_once "navbar_adm.php";                
+    }  
 
 
 ?>
@@ -54,7 +57,7 @@
             </div>
             
             <div class="col-12 col-md-6 card-tamanho">
-                <a href="" class="lu">
+                <a href="index.php?controle=documentoController&metodo=selectPdfAss" class="lu">
                     <div class="card card-custom h-100 rounded-3">
                         <div class="card-body d-flex justify-content-center align-items-center flex-column">
                             <i class="fa-solid fa-file-pen fa-5x pb-3 cor-texto"></i>
@@ -86,16 +89,6 @@
                 </a>
             </div>
             
-            <div class="col-12 col-md-6 card-tamanho">
-                <a href="" class="lu">
-                    <div class="card card-custom h-100 rounded-3">
-                        <div class="card-body d-flex justify-content-center align-items-center flex-column">
-                            <i class="fa-solid fa-file-pdf fa-5x pb-3 cor-texto"></i>
-                            <h4 class="card-title">Solicitar Documento Antigo</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
             <div class="col-12 col-md-6 card-tamanho">
                 <a href="index.php?controle=embarcacaoController&metodo=select" class="lu">
                     <div class="card card-custom h-100 rounded-3">

@@ -1,5 +1,6 @@
 <?php
-    require_once "navbar_adm.php";
+     require_once "navbar_adm.php";                
+   
 ?>
     <style>
         .card-custom:hover {
@@ -25,7 +26,7 @@
         }
 
     </style>
-    <div class="container py-5 text-center cor-texto">
+    <div class="container py-5 text-center cor-texto min-vh-100">
         <h1 class="display-4 fw-bold mb-3">Painel do Administrador</h1>
         <p class="lead mb-5">Bem-vindo(a) ao seu painel de controle.</p>
 
@@ -73,26 +74,7 @@
                 </a>
             </div>
             
-            <div class="col-12 col-md-6 card-tamanho">
-                <a href="" class="lu">
-                    <div class="card card-custom h-100 rounded-3">
-                        <div class="card-body d-flex justify-content-center align-items-center flex-column">
-                            <i class="fa-solid fa-file-pdf fa-7x pb-3 cor-texto"></i>
-                            <h4 class="card-title">Todos os Documentos</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 card-tamanho">
-                <a href="" class="lu">
-                    <div class="card card-custom h-100 rounded-3">
-                        <div class="card-body d-flex justify-content-center align-items-center flex-column">
-                            <i class="fa-solid fa-ship fa-7x pb-3 cor-texto"></i>
-                            <h4 class="card-title">Todas as Embarcações</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
+
         </div>
 <!-- Fechamento da tag <main> da navbar. -->
 </main>

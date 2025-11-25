@@ -3,17 +3,14 @@
 // Espera variáveis: $estaleiro, $embarcacao, $cliente, $documento
 function h($s){ return htmlspecialchars($s ?? '', ENT_QUOTES, 'UTF-8'); }
 // mês em português
-$meses = [1=>'janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
-$dia = date('d');
-$mes = $meses[(int)date('m')];
-$ano = date('Y');
+$data = date('d/m/y');
 ?>
 <!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <style>
-    body { font-family: DejaVu Sans, sans-serif; font-size: 12px; color: #111; line-height:1.4 }
+    body { font-family: 'Noto Sans', sans-serif; font-size: 12px; color: #111; line-height:1.4 }
     .center { text-align:center }
     .underline { text-decoration: underline }
     .bold { font-weight:bold }
@@ -38,30 +35,29 @@ $ano = date('Y');
   </p>
 
   <div class="list">
-    <div class="field">a) Nome da Embarcação: <?= h($embarcacao['nome'] ?? '') ?></div>
-    <div class="field">b) Comprimento total: <?= h($embarcacao['comprimento_total'] ?? $embarcacao['comprimento'] ?? '') ?></div>
-    <div class="field">c) Boca Moldada: <?= h($embarcacao['boca_moldada'] ?? '') ?></div>
-    <div class="field">d) Pontal Moldado: <?= h($embarcacao['pontal_moldado'] ?? '') ?></div>
-    <div class="field">e) Calado Máximo: <?= h($embarcacao['calado_maximo'] ?? '') ?></div>
-    <div class="field">f) Calado leve: <?= h($embarcacao['calado_leve'] ?? '') ?></div>
-    <div class="field">g) Arqueação Bruta: <?= h($embarcacao['arqueacao_bruta'] ?? '') ?></div>
-    <div class="field">h) Arqueação líquida: <?= h($embarcacao['arqueacao_liquida'] ?? '') ?></div>
-    <div class="field">i) TPB: <?= h($embarcacao['tpb'] ?? '') ?></div>
-    <div class="field">j) Contorno: <?= h($embarcacao['contorno'] ?? '') ?></div>
-    <div class="field">k) Lastro: <?= h($embarcacao['lastro'] ?? '') ?></div>
-    <div class="field">l) Área de navegação / Tipo de Serviço: <?= h($embarcacao['area_navegacao_tipo_servico'] ?? '') ?></div>
-    <div class="field">m) Tipo de Embarcação: <?= h($embarcacao['tipo_embarcacao'] ?? '') ?></div>
-    <div class="field">n) Material do Casco: <?= h($embarcacao['material_casco'] ?? '') ?></div>
-    <div class="field">o) Motorização máxima: <?= h($embarcacao['motorizacao_max'] ?? '') ?> HP</div>
-    <div class="field">p) Motorização mínima: <?= h($embarcacao['motorizacao_min'] ?? '') ?> HP</div>
-  <div class="field">q) Construtor: <?= h($estaleiro['nome_empresa'] ?? '') ?></div>
-  <div class="field">r) Ano de Construção: <?= h($embarcacao['ano_construcao_emb'] ?? $cliente['ano_construcao_emb'] ?? '') ?></div>
-  <div class="field">s) Nº Casco/Chassi: <?= h($embarcacao['chassi_emb'] ?? $cliente['chassi_emb'] ?? '') ?></div>
-  <div class="field">t) Modelo: <?= h($embarcacao['modelo'] ?? $embarcacao['tipo_embarcacao'] ?? '') ?></div>
-  <div class="field">u) Cor predominante: <?= h($embarcacao['cor'] ?? $embarcacao['cor_predominante'] ?? '') ?></div>
-    <div class="field">v) Nº de inscrição: <?= h($embarcacao['num_inscricao'] ?? '') ?></div>
-    <div class="field">w) Armador: <?= h($cliente['nome'] ?? '') ?> (<?= h($cliente['cpf_cnpj'] ?? '') ?>)</div>
-    <div class="field">x) Endereço: <?= h(($cliente['logradouro'] ?? '') . ', ' . ($cliente['numero'] ?? '')) ?> - <?= h(($cliente['bairro'] ?? '') . ' - ' . ($cliente['cidade'] ?? '') . '/' . ($cliente['estado'] ?? '')) ?></div>
+    <div class="field"><p>b) Comprimento total: <?= h($embarcacao['comprimento_total'] ?? $embarcacao['comprimento'] ?? '') ?> m</p></div>
+    <div class="field"><p>c) Boca Moldada: <?= h($embarcacao['boca_moldada'] ?? '') ?> m</p></div>
+    <div class="field"><p>d) Pontal Moldado: <?= h($embarcacao['pontal_moldado'] ?? '') ?> m</p></div>
+    <div class="field"><p>e) Calado Máximo: <?= h($embarcacao['calado_maximo'] ?? '') ?> m</p></div>
+    <div class="field"><p>f) Calado leve: <?= h($embarcacao['calado_leve'] ?? '') ?> m</p></div>
+    <div class="field"><p>g) Arqueação Bruta: <?= h($embarcacao['arqueacao_bruta'] ?? '') ?> </p></div>
+    <div class="field"><p>h) Arqueação líquida: <?= h($embarcacao['arqueacao_liquida'] ?? '') ?> </p> </div>
+    <div class="field"><p>i) TPB: <?= h($embarcacao['tpb'] ?? '') ?> ton</p></div>
+    <div class="field"><p>j) Contorno: <?= h($embarcacao['contorno'] ?? '') ?> m</p></div>
+    <div class="field"><p>k) Lastro: <?= h($embarcacao['lastro'] ?? '') ?> ton</p></div>
+    <div class="field"><p>l) Área de navegação / Tipo de Serviço: <?= h($embarcacao['area_navegacao_tipo_servico'] ?? '') ?>.</p></div>
+    <div class="field"><p>m) Tipo de Embarcação: <?= h($embarcacao['tipo_embarcacao'] ?? '') ?></p></div>
+    <div class="field"><p>n) Material do Casco: <?= h($embarcacao['material_casco'] ?? '') ?></p></div>
+    <div class="field"><p>o) Motorização máxima: <?= h($embarcacao['motorizacao_max'] ?? '') ?> HP</p></div>
+    <div class="field"><p>p) Motorização mínima: <?= h($embarcacao['motorizacao_min'] ?? '') ?> HP</p></div>
+  <div class="field"><p>q) Construtor: <?= h($estaleiro['nome_empresa'] ?? '') ?></p></div>
+  <div class="field"><p>r) Ano de Construção: <?= h($embarcacao['ano_construcao_emb'] ?? $cliente['ano_construcao_emb'] ?? '') ?></p></div>
+  <div class="field"><p>s) Nº Casco/Chassi: <?= h($embarcacao['chassi_emb'] ?? $cliente['chassi_emb'] ?? '') ?></p></div>
+  <div class="field"><p>t) Modelo: <?= h($embarcacao['modelo'] ?? $embarcacao['tipo_embarcacao'] ?? '') ?></p></div>
+  <div class="field"><p>u) Cor predominante: <?= h($embarcacao['cor'] ?? $embarcacao['cor_predominante'] ?? '') ?></p></div>
+    <div class="field"><p>v) Nº de inscrição: <?= h($embarcacao['num_inscricao'] ?? '') ?></p></div>
+    <div class="field"><p>w) Armador: <?= h($cliente['nome'] ?? '') ?> (<?= h($cliente['cpf_cnpj'] ?? '') ?>)</p></div>
+    <div class="field"><p>x) Endereço: <?= h(($cliente['logradouro'] ?? '') . ', ' . ($cliente['numero'] ?? '')) ?> - <?= h(($cliente['bairro'] ?? '') . ' - ' . ($cliente['cidade'] ?? '') . '/' . ($cliente['estado'] ?? '')) ?></div>
   </div>
 
   <p>
@@ -76,7 +72,7 @@ $ano = date('Y');
 
   <p>Declaro que, salvo indicação em contrário, qualquer modificação de lastreamento, tancagem, arranjo geral ou alterações de qualquer monta, bem como incidentes ou sinistros, invalidam a presente declaração.</p>
 
-  <div class="center" style="margin-top:30px">São Paulo, <?= $dia ?> de <?= $mes ?> de <?= $ano ?></div>
+  <div class="center" style="margin-top:30px"><p><?= h( $estaleiro['cidade']) ?>/<?= h( $estaleiro['estado']) ?>, <?= $data?></p></div>
 
   <div class="signature">
     <div class="sig-line"></div>

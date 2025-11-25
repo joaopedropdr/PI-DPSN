@@ -18,7 +18,6 @@
             }
             $msg = array("", "", "", "", "", "", "", "", "", "", "");
             $erro = false;
-            if(!isset($_SESSION)) session_start();
             if($_POST) {
                 if(empty($_POST["embarcacao"])) {
                     $msg[0] = "Selecione a embarcação do cliente";
@@ -71,7 +70,6 @@
                     $_POST["cidade"], $_POST["estado"]);
                     $ClienteDAO = new ClienteDAO();
                     $retorno = $ClienteDAO->insert($Cliente);
-                    var_dump($retorno);
                     if($retorno !== "Erro") {
                         // Fazendo a relação N:N no banco
                         $CE = new Cliente_estaleiro(0, $_SESSION["id_estaleiro"], $retorno);

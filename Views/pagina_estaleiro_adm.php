@@ -1,5 +1,11 @@
 <?php
-require_once "navbar_adm.php";
+    if(!isset($_SESSION)) session_start();
+    if(isset($_SESSION["id_estaleiro"])) {  
+        require_once "navbar_est.php";        
+    }         
+    if(isset($_SESSION["id_administrador"])) {
+        require_once "navbar_adm.php";                
+    }  
 ?>
 
 <style>
@@ -103,22 +109,28 @@ require_once "navbar_adm.php";
     ?>
 
     <div class="d-flex flex-wrap justify-content-center gap-4">
-        <div class="card-opcao">
-            <img src="imgs/addembarcacao.png" alt="Cadastrar Embarcações">
-            <span>Cadastrar<br>Embarcações</span>
-        </div>
-        <div class="card-opcao">
-            <img src="imgs/assdocument.png" alt="Assinar Documentos">
-            <span>Assinar<br>Documentos</span>
-        </div>
-        <div class="card-opcao">
-            <img src="imgs/embarcacoes.png" alt="Embarcações Cadastradas">
-            <span>Embarcações<br>Cadastradas</span>
-        </div>
-        <div class="card-opcao">
-            <img src="imgs/solicitarnovodocumento.png" alt="Solicitar novo Documento">
-            <span>Solicitar novo<br>Documento</span>
-        </div>
+        <a href="index.php?controle=embarcacaoController&metodo=insert&id=<?php echo $retorno[0]->id_estaleiro; ?>" class="nav-link">
+            <div class="card-opcao ">
+                <img src="imgs/addembarcacao.png" alt="Cadastrar Embarcações">
+                <span>Cadastrar<br>Embarcações</span>
+            
+            </div>
+        </a>
+        <a href="index.php?controle=documentoController&metodo=selectPdf&id=<?php echo $retorno[0]->id_estaleiro; ?>" class="nav-link ">
+            <div class="card-opcao">
+            
+                <img src="imgs/assdocument.png" alt="Assinar Documentos">
+                <span>Assinar<br>Documentos</span>
+           
+            </div>
+        </a>
+        <a href="index.php?controle=embarcacaoController&metodo=select&id=<?php echo $retorno[0]->id_estaleiro; ?>" class="nav-link ">
+            <div class="card-opcao">
+                <img src="imgs/embarcacoes.png" alt="Embarcações Cadastradas">
+                <span>Embarcações<br>Cadastradas</span>         
+            </div>
+        </a>
+
     </div>
     <?php 
         foreach($retorno as $estaleiro) {
