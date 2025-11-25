@@ -12,15 +12,6 @@ WHERE NOT EXISTS (SELECT 1 FROM estaleiros WHERE cnpj = '00.000.000/0001-99');
 -- Pegar id do estaleiro (novo ou existente)
 SET @estaleiro_id = (SELECT id_estaleiro FROM estaleiros WHERE cnpj = '00.000.000/0001-99' LIMIT 1);
 
--- Inserir cliente de teste (se ainda não existir)
-INSERT INTO clientes (nome, cpf_cnpj, cep, logradouro, numero, bairro, cidade, estado)
-SELECT 'João Teste', '000.000.000-00', '02000-000', 'Av. Cliente', '45', 'Centro', 'Cidade Cliente', 'SP'
-FROM DUAL
-WHERE NOT EXISTS (SELECT 1 FROM clientes WHERE cpf_cnpj = '000.000.000-00');
-
--- Pegar id do cliente
-SET @cliente_id = (SELECT id_cliente FROM clientes WHERE cpf_cnpj = '000.000.000-00' LIMIT 1);
-
 -- Inserir embarcação de teste vinculada ao estaleiro
 INSERT INTO embarcacoes (estaleiro_id, nome, comprimento_total, boca_moldada, pontal_moldado, calado_maximo, calado_leve, arqueacao_bruta, arqueacao_liquida, tpb, contorno, lastro, area_navegacao_tipo_servico, tipo_embarcacao, material_casco, motorizacao_max, motorizacao_min, num_tripulantes, num_passageiros, num_inscricao)
 SELECT @estaleiro_id, 'Barco Teste', 12.50, 3.40, 2.10, 1.20, 0.90, 10.00, 8.00, 5.00, 4.00, NULL, 'Costeira', 'Veleiro', 'Fibra', 200, NULL, 4, 6, NULL
@@ -30,6 +21,15 @@ WHERE NOT EXISTS (SELECT 1 FROM embarcacoes WHERE nome = 'Barco Teste' AND estal
 -- Pegar id da embarcação
 SET @embarcacao_id = (SELECT id_embarcacao FROM embarcacoes WHERE nome = 'Barco Teste' AND estaleiro_id = @estaleiro_id LIMIT 1);
 
+-- Inserir cliente de teste (se ainda não existir)
+INSERT INTO clientes (embarcacao_id, nome, cpf_cnpj, cep, logradouro, numero, bairro, cidade, estado)
+SELECT @embarcacao_id, 'João Teste', '000.000.000-00', '02000-000', 'Av. Cliente', '45', 'Centro', 'Cidade Cliente', 'SP'
+FROM DUAL
+WHERE NOT EXISTS (SELECT 1 FROM clientes WHERE cpf_cnpj = '000.000.000-00');
+
+-- Pegar id do cliente
+SET @cliente_id = (SELECT id_cliente FROM clientes WHERE cpf_cnpj = '000.000.000-00' LIMIT 1);
+
 -- Inserir documento de teste ligado à embarcação e cliente
 INSERT INTO documentos (embarcacao_id, cliente_id)
 SELECT @embarcacao_id, @cliente_id
@@ -38,8 +38,3 @@ WHERE NOT EXISTS (SELECT 1 FROM documentos WHERE embarcacao_id = @embarcacao_id 
 
 -- Pegar id do documento inserido/recente
 SET @documento_id = (SELECT id_documento FROM documentos WHERE embarcacao_id = @embarcacao_id AND cliente_id = @cliente_id ORDER BY criado_em DESC LIMIT 1);
-
--- Opcional: inserir um registro em pdf_documentos (vazio) -- comentar se não quiser
--- INSERT INTO pdf_documentos (documento_id, pdf, assinado) VALUES (@documento_id, NULL, NULL);
-
--- Fim do script de dados de teste

@@ -43,6 +43,32 @@ CREATE TABLE estaleiros(
     alterado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deletado_em DATETIME NULL
 );
+CREATE TABLE embarcacoes(
+	id_embarcacao BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    estaleiro_id BIGINT UNSIGNED,
+    nome VARCHAR(255) NULL,
+    comprimento_total DECIMAL(8,2) NOT NULL,
+    boca_moldada DECIMAL(8,2) NOT NULL,
+    pontal_moldado DECIMAL(8,2) NOT NULL,
+    calado_maximo DECIMAL(8,2) NOT NULL,
+    calado_leve DECIMAL(8,2) NOT NULL,
+    arqueacao_bruta DECIMAL(8,2) NOT NULL,
+    arqueacao_liquida DECIMAL(8,2) NOT NULL,
+    tpb DECIMAL(8,2) NOT NULL,
+    contorno DECIMAL(8,2) NOT NULL,
+    lastro DECIMAL(8,2) NULL,
+    area_navegacao_tipo_servico VARCHAR(255) NOT NULL,
+    tipo_embarcacao VARCHAR(255) NOT NULL,
+    material_casco VARCHAR(255) NOT NULL,
+    motorizacao_max INT NOT NULL,
+    motorizacao_min INT NOT NULL,
+    -- lOG
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+    alterado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deletado_em DATETIME NULL,
+    -- Chave estrangeira
+    FOREIGN KEY (estaleiro_id) REFERENCES estaleiros(id_estaleiro)
+);
 CREATE TABLE clientes(
 	id_cliente BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nome VARCHAR(255) NOT NULL,
@@ -90,32 +116,6 @@ CREATE TABLE clientes_estaleiros(
     deletado_em DATETIME NULL,
     -- Chaves estrangeiras
     FOREIGN KEY (cliente_id) REFERENCES clientes(id_cliente),
-    FOREIGN KEY (estaleiro_id) REFERENCES estaleiros(id_estaleiro)
-);
-CREATE TABLE embarcacoes(
-	id_embarcacao BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    estaleiro_id BIGINT UNSIGNED,
-    nome VARCHAR(255) NULL,
-    comprimento_total DECIMAL(8,2) NOT NULL,
-    boca_moldada DECIMAL(8,2) NOT NULL,
-    pontal_moldado DECIMAL(8,2) NOT NULL,
-    calado_maximo DECIMAL(8,2) NOT NULL,
-    calado_leve DECIMAL(8,2) NOT NULL,
-    arqueacao_bruta DECIMAL(8,2) NOT NULL,
-    arqueacao_liquida DECIMAL(8,2) NOT NULL,
-    tpb DECIMAL(8,2) NOT NULL,
-    contorno DECIMAL(8,2) NOT NULL,
-    lastro DECIMAL(8,2) NULL,
-    area_navegacao_tipo_servico VARCHAR(255) NOT NULL,
-    tipo_embarcacao VARCHAR(255) NOT NULL,
-    material_casco VARCHAR(255) NOT NULL,
-    motorizacao_max INT NOT NULL,
-    motorizacao_min INT NOT NULL,
-    -- lOG
-    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
-    alterado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    deletado_em DATETIME NULL,
-    -- Chave estrangeira
     FOREIGN KEY (estaleiro_id) REFERENCES estaleiros(id_estaleiro)
 );
 -- Mudanças na tabela
@@ -166,7 +166,3 @@ CREATE TABLE pdf_documentos(
     -- Chave estrangeira
 	FOREIGN KEY (documento_id) REFERENCES documentos(id_documento)
 );
-
-CREATE TABLE solicitacoes_pdfs_antigos();
-
-
